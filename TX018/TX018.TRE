@@ -1,0 +1,11 @@
+읕TX018
+   읕MAIN  0/30  Ram=8
+      쳐@CINIT  (Inline)  Ram=0
+      읕PLLPROGRAM  0/25  Ram=7
+         쳐WRITE  0/31  Ram=2
+         쳐WRITE  0/31  Ram=2
+         쳐LOADENABLE  0/9  Ram=0
+         쳐WRITE  0/31  Ram=2
+         쳐WRITE  0/31  Ram=2
+         쳐WRITE  0/31  Ram=2
+         읕LOADENABLE  0/9  Ram=0

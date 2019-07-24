@@ -1,0 +1,402 @@
+ANSI-C/cC++ Compiler for HC08 V-5.0.15, Apr 11 2002
+
+    1:  #include "math.h"
+    2:  #include "buffer.h"
+    3:  #include <stdlib.h>
+    4:  
+    5:  CBuffer::CBuffer (void)
+    6:  {
+    7:  	Init();
+    8:  }
+    9:  
+
+Function: CBuffer::CBuffer( const CBuffer&)
+Source  : Z:\vph1\Personalizado\pedido 4340\v4\Comun\buffer.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa;Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin;Z:\vph1\Personalizado\pedido 4340\v4\Casa\cmd;*Z:\vph1\Personalizado\pedido 4340\v4\Casa\Code;Z:\vph1\Personalizado\pedido 4340\v4\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\Personalizado\pedido 4340\v4\Comun;*Z:\vph1\Personalizado\pedido 4340\v4;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"OBJPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Env"TEXTPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Lasm=%n.lst -ObjN="Z:\vph1\Personalizado\pedido 4340\v4\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\buffer.cpp.o" -Qvtpfar
+
+
+No source information available for functions created by the compiler internally
+  0000 87               PSHA  
+  0001 89               PSHX  
+  0002 89               PSHX  
+  0003 8a               PULH  
+  0004 97               TAX   
+  0005 e601             LDA   1,X
+  0007 87               PSHA  
+  0008 f6               LDA   ,X
+  0009 87               PSHA  
+  000a 95               TSX   
+  000b e606             LDA   6,X
+  000d 87               PSHA  
+  000e ee07             LDX   7,X
+  0010 9ee603           LDA   3,SP
+  0013 8a               PULH  
+  0014 e701             STA   1,X
+  0016 86               PULA  
+  0017 f7               STA   ,X
+  0018 95               TSX   
+  0019 e601             LDA   1,X
+  001b 87               PSHA  
+  001c ee02             LDX   2,X
+  001e 8a               PULH  
+  001f e603             LDA   3,X
+  0021 ee02             LDX   2,X
+  0023 9ee701           STA   1,SP
+  0026 9ee606           LDA   6,SP
+  0029 87               PSHA  
+  002a 8a               PULH  
+  002b 86               PULA  
+  002c 89               PSHX  
+  002d 9eee07           LDX   7,SP
+  0030 e703             STA   3,X
+  0032 86               PULA  
+  0033 e702             STA   2,X
+  0035 95               TSX   
+  0036 f6               LDA   ,X
+  0037 87               PSHA  
+  0038 ee01             LDX   1,X
+  003a 8a               PULH  
+  003b e605             LDA   5,X
+  003d ee04             LDX   4,X
+  003f 87               PSHA  
+  0040 9ee606           LDA   6,SP
+  0043 87               PSHA  
+  0044 8a               PULH  
+  0045 86               PULA  
+  0046 89               PSHX  
+  0047 9eee07           LDX   7,SP
+  004a e705             STA   5,X
+  004c 86               PULA  
+  004d e704             STA   4,X
+  004f a702             AIS   #2
+  0051 81               RTS   
+
+Function: CBuffer::operator =( const CBuffer&)
+Source  : Z:\vph1\Personalizado\pedido 4340\v4\Comun\buffer.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa;Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin;Z:\vph1\Personalizado\pedido 4340\v4\Casa\cmd;*Z:\vph1\Personalizado\pedido 4340\v4\Casa\Code;Z:\vph1\Personalizado\pedido 4340\v4\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\Personalizado\pedido 4340\v4\Comun;*Z:\vph1\Personalizado\pedido 4340\v4;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"OBJPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Env"TEXTPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Lasm=%n.lst -ObjN="Z:\vph1\Personalizado\pedido 4340\v4\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\buffer.cpp.o" -Qvtpfar
+
+
+No source information available for functions created by the compiler internally
+  0000 87               PSHA  
+  0001 89               PSHX  
+  0002 89               PSHX  
+  0003 8a               PULH  
+  0004 97               TAX   
+  0005 e601             LDA   1,X
+  0007 87               PSHA  
+  0008 f6               LDA   ,X
+  0009 95               TSX   
+  000a ee05             LDX   5,X
+  000c 89               PSHX  
+  000d 95               TSX   
+  000e ee07             LDX   7,X
+  0010 8a               PULH  
+  0011 87               PSHA  
+  0012 9ee602           LDA   2,SP
+  0015 e701             STA   1,X
+  0017 86               PULA  
+  0018 f7               STA   ,X
+  0019 95               TSX   
+  001a e601             LDA   1,X
+  001c 87               PSHA  
+  001d ee02             LDX   2,X
+  001f 8a               PULH  
+  0020 e603             LDA   3,X
+  0022 ee02             LDX   2,X
+  0024 9ee701           STA   1,SP
+  0027 9ee606           LDA   6,SP
+  002a 87               PSHA  
+  002b 8a               PULH  
+  002c 86               PULA  
+  002d 89               PSHX  
+  002e 9eee07           LDX   7,SP
+  0031 e703             STA   3,X
+  0033 86               PULA  
+  0034 e702             STA   2,X
+  0036 95               TSX   
+  0037 f6               LDA   ,X
+  0038 87               PSHA  
+  0039 ee01             LDX   1,X
+  003b 8a               PULH  
+  003c e605             LDA   5,X
+  003e ee04             LDX   4,X
+  0040 87               PSHA  
+  0041 9ee606           LDA   6,SP
+  0044 87               PSHA  
+  0045 8a               PULH  
+  0046 86               PULA  
+  0047 89               PSHX  
+  0048 9eee07           LDX   7,SP
+  004b e705             STA   5,X
+  004d 86               PULA  
+  004e e704             STA   4,X
+  0050 9f               TXA   
+  0051 8b               PSHH  
+  0052 88               PULX  
+  0053 a702             AIS   #2
+  0055 81               RTS   
+
+Function: CBuffer::CBuffer( void)
+Source  : Z:\vph1\Personalizado\pedido 4340\v4\Comun\buffer.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa;Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin;Z:\vph1\Personalizado\pedido 4340\v4\Casa\cmd;*Z:\vph1\Personalizado\pedido 4340\v4\Casa\Code;Z:\vph1\Personalizado\pedido 4340\v4\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\Personalizado\pedido 4340\v4\Comun;*Z:\vph1\Personalizado\pedido 4340\v4;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"OBJPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Env"TEXTPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Lasm=%n.lst -ObjN="Z:\vph1\Personalizado\pedido 4340\v4\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\buffer.cpp.o" -Qvtpfar
+
+  0000 87               PSHA  
+  0001 89               PSHX  
+  0002 a60a             LDA   #10
+  0004 5f               CLRX  
+  0005 cd0000           JSR   Init
+  0008 a702             AIS   #2
+  000a 81               RTS   
+   10:  char CBuffer::operator[] (char pos)
+   11:  {
+
+Function: CBuffer::operator []( unsigned char)
+Source  : Z:\vph1\Personalizado\pedido 4340\v4\Comun\buffer.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa;Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin;Z:\vph1\Personalizado\pedido 4340\v4\Casa\cmd;*Z:\vph1\Personalizado\pedido 4340\v4\Casa\Code;Z:\vph1\Personalizado\pedido 4340\v4\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\Personalizado\pedido 4340\v4\Comun;*Z:\vph1\Personalizado\pedido 4340\v4;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"OBJPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Env"TEXTPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Lasm=%n.lst -ObjN="Z:\vph1\Personalizado\pedido 4340\v4\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\buffer.cpp.o" -Qvtpfar
+
+  0000 87               PSHA  
+   12:  	return _ptrBuffer[pos];
+  0001 95               TSX   
+  0002 e603             LDA   3,X
+  0004 87               PSHA  
+  0005 ee04             LDX   4,X
+  0007 9ee602           LDA   2,SP
+  000a 8a               PULH  
+  000b eb01             ADD   1,X
+  000d 87               PSHA  
+  000e 4f               CLRA  
+  000f f9               ADC   ,X
+  0010 87               PSHA  
+  0011 8a               PULH  
+  0012 88               PULX  
+  0013 f6               LDA   ,X
+   13:  }
+  0014 8a               PULH  
+  0015 81               RTS   
+   14:  CBuffer::CBuffer (int len)
+   15:  {
+
+Function: CBuffer::CBuffer( int)
+Source  : Z:\vph1\Personalizado\pedido 4340\v4\Comun\buffer.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa;Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin;Z:\vph1\Personalizado\pedido 4340\v4\Casa\cmd;*Z:\vph1\Personalizado\pedido 4340\v4\Casa\Code;Z:\vph1\Personalizado\pedido 4340\v4\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\Personalizado\pedido 4340\v4\Comun;*Z:\vph1\Personalizado\pedido 4340\v4;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"OBJPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Env"TEXTPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Lasm=%n.lst -ObjN="Z:\vph1\Personalizado\pedido 4340\v4\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\buffer.cpp.o" -Qvtpfar
+
+  0000 87               PSHA  
+  0001 89               PSHX  
+   16:  	Init(len);
+  0002 9ee606           LDA   6,SP
+  0005 87               PSHA  
+  0006 9ee606           LDA   6,SP
+  0009 87               PSHA  
+  000a 9ee604           LDA   4,SP
+  000d cd0000           JSR   Init
+   17:  }
+  0010 a704             AIS   #4
+  0012 81               RTS   
+   18:  
+   19:  CBuffer::~CBuffer(void)
+   20:  {
+
+Function: CBuffer::~CBuffer( void)
+Source  : Z:\vph1\Personalizado\pedido 4340\v4\Comun\buffer.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa;Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin;Z:\vph1\Personalizado\pedido 4340\v4\Casa\cmd;*Z:\vph1\Personalizado\pedido 4340\v4\Casa\Code;Z:\vph1\Personalizado\pedido 4340\v4\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\Personalizado\pedido 4340\v4\Comun;*Z:\vph1\Personalizado\pedido 4340\v4;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"OBJPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Env"TEXTPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Lasm=%n.lst -ObjN="Z:\vph1\Personalizado\pedido 4340\v4\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\buffer.cpp.o" -Qvtpfar
+
+   21:  	free (_ptrBuffer);
+  0000 89               PSHX  
+  0001 8a               PULH  
+  0002 97               TAX   
+  0003 e601             LDA   1,X
+  0005 fe               LDX   ,X
+  0006 cc0000           JMP   free
+   22:  }
+   23:  
+   24:  
+   25:  void CBuffer::Init (int len /* = 10*/)
+   26:  {
+
+Function: CBuffer::Init( int)
+Source  : Z:\vph1\Personalizado\pedido 4340\v4\Comun\buffer.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa;Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin;Z:\vph1\Personalizado\pedido 4340\v4\Casa\cmd;*Z:\vph1\Personalizado\pedido 4340\v4\Casa\Code;Z:\vph1\Personalizado\pedido 4340\v4\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\Personalizado\pedido 4340\v4\Comun;*Z:\vph1\Personalizado\pedido 4340\v4;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"OBJPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Env"TEXTPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Lasm=%n.lst -ObjN="Z:\vph1\Personalizado\pedido 4340\v4\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\buffer.cpp.o" -Qvtpfar
+
+   27:  	_ptrBuffer = (char *)malloc ((char)10);
+  0000 a60a             LDA   #10
+  0002 5f               CLRX  
+  0003 cd0000           JSR   malloc
+  0006 87               PSHA  
+  0007 9ee604           LDA   4,SP
+  000a 87               PSHA  
+  000b 8a               PULH  
+  000c 89               PSHX  
+  000d 9eee06           LDX   6,SP
+  0010 9ee602           LDA   2,SP
+  0013 e701             STA   1,X
+  0015 86               PULA  
+  0016 f7               STA   ,X
+   28:  	_next_in=0;
+  0017 6f03             CLR   3,X
+  0019 6f02             CLR   2,X
+   29:  	_next_out=0;
+  001b 6f05             CLR   5,X
+  001d 6f04             CLR   4,X
+  001f 8a               PULH  
+   30:  }
+  0020 81               RTS   
+   31:  unsigned char CBuffer::kbhit()
+   32:  {
+
+Function: CBuffer::kbhit( void)
+Source  : Z:\vph1\Personalizado\pedido 4340\v4\Comun\buffer.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa;Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin;Z:\vph1\Personalizado\pedido 4340\v4\Casa\cmd;*Z:\vph1\Personalizado\pedido 4340\v4\Casa\Code;Z:\vph1\Personalizado\pedido 4340\v4\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\Personalizado\pedido 4340\v4\Comun;*Z:\vph1\Personalizado\pedido 4340\v4;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"OBJPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Env"TEXTPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Lasm=%n.lst -ObjN="Z:\vph1\Personalizado\pedido 4340\v4\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\buffer.cpp.o" -Qvtpfar
+
+   33:  	return (_next_in!=_next_out);
+  0000 89               PSHX  
+  0001 8a               PULH  
+  0002 97               TAX   
+  0003 e602             LDA   2,X
+  0005 e104             CMP   4,X
+  0007 2608             BNE   L11 ;abs = 0011
+  0009 e603             LDA   3,X
+  000b e105             CMP   5,X
+  000d 2602             BNE   L11 ;abs = 0011
+  000f 4f               CLRA  
+  0010 81               RTS   
+  0011          L11:    
+  0011 a601             LDA   #1
+   34:  }
+  0013 81               RTS   
+   35:  
+   36:  int CBuffer::GetLen()
+   37:  {
+
+Function: CBuffer::GetLen( void)
+Source  : Z:\vph1\Personalizado\pedido 4340\v4\Comun\buffer.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa;Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin;Z:\vph1\Personalizado\pedido 4340\v4\Casa\cmd;*Z:\vph1\Personalizado\pedido 4340\v4\Casa\Code;Z:\vph1\Personalizado\pedido 4340\v4\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\Personalizado\pedido 4340\v4\Comun;*Z:\vph1\Personalizado\pedido 4340\v4;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"OBJPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Env"TEXTPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Lasm=%n.lst -ObjN="Z:\vph1\Personalizado\pedido 4340\v4\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\buffer.cpp.o" -Qvtpfar
+
+   38:  	return abs (_next_out-_next_in);
+  0000 89               PSHX  
+  0001 8a               PULH  
+  0002 97               TAX   
+  0003 e605             LDA   5,X
+  0005 e003             SUB   3,X
+  0007 87               PSHA  
+  0008 e604             LDA   4,X
+  000a e202             SBC   2,X
+  000c 97               TAX   
+  000d 86               PULA  
+  000e cc0000           JMP   abs
+   39:  }
+   40:  
+   41:  void CBuffer::put (char Chr)
+   42:  {
+
+Function: CBuffer::put( unsigned char)
+Source  : Z:\vph1\Personalizado\pedido 4340\v4\Comun\buffer.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa;Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin;Z:\vph1\Personalizado\pedido 4340\v4\Casa\cmd;*Z:\vph1\Personalizado\pedido 4340\v4\Casa\Code;Z:\vph1\Personalizado\pedido 4340\v4\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\Personalizado\pedido 4340\v4\Comun;*Z:\vph1\Personalizado\pedido 4340\v4;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"OBJPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Env"TEXTPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Lasm=%n.lst -ObjN="Z:\vph1\Personalizado\pedido 4340\v4\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\buffer.cpp.o" -Qvtpfar
+
+  0000 87               PSHA  
+  0001 a7fe             AIS   #-2
+   43:     int t;
+   44:  
+   45:     _ptrBuffer[_next_in]=Chr;
+  0003 95               TSX   
+  0004 e605             LDA   5,X
+  0006 87               PSHA  
+  0007 ee06             LDX   6,X
+  0009 8a               PULH  
+  000a e601             LDA   1,X
+  000c eb03             ADD   3,X
+  000e 87               PSHA  
+  000f e602             LDA   2,X
+  0011 f9               ADC   ,X
+  0012 87               PSHA  
+  0013 95               TSX   
+  0014 e604             LDA   4,X
+  0016 8a               PULH  
+  0017 88               PULX  
+  0018 f7               STA   ,X
+   46:     t=_next_in;
+  0019 95               TSX   
+  001a e605             LDA   5,X
+  001c 87               PSHA  
+  001d ee06             LDX   6,X
+  001f 8a               PULH  
+  0020 e603             LDA   3,X
+  0022 9ee702           STA   2,SP
+  0025 ee02             LDX   2,X
+  0027 9eef01           STX   1,SP
+   47:     _next_in=(_next_in+1) & BUFFER_SIZE;
+  002a 4c               INCA  
+  002b a407             AND   #7
+  002d 9eee07           LDX   7,SP
+  0030 e703             STA   3,X
+  0032 4f               CLRA  
+  0033 6f02             CLR   2,X
+   48:     if(_next_in==_next_out)
+  0035 e104             CMP   4,X
+  0037 2610             BNE   L49 ;abs = 0049
+  0039 e603             LDA   3,X
+  003b e105             CMP   5,X
+  003d 260a             BNE   L49 ;abs = 0049
+   49:       _next_in=t;           // Buffer full !!
+  003f 9ee602           LDA   2,SP
+  0042 e703             STA   3,X
+  0044 9ee601           LDA   1,SP
+  0047 e702             STA   2,X
+  0049          L49:    
+   50:  }
+  0049 a703             AIS   #3
+  004b 81               RTS   
+   51:  
+   52:  char CBuffer::get()
+   53:  {
+
+Function: CBuffer::get( void)
+Source  : Z:\vph1\Personalizado\pedido 4340\v4\Comun\buffer.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa;Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin;Z:\vph1\Personalizado\pedido 4340\v4\Casa\cmd;*Z:\vph1\Personalizado\pedido 4340\v4\Casa\Code;Z:\vph1\Personalizado\pedido 4340\v4\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\Personalizado\pedido 4340\v4\Comun;*Z:\vph1\Personalizado\pedido 4340\v4;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"OBJPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Env"TEXTPATH=Z:\vph1\Personalizado\pedido 4340\v4\Casa\bin" -Lasm=%n.lst -ObjN="Z:\vph1\Personalizado\pedido 4340\v4\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\buffer.cpp.o" -Qvtpfar
+
+  0000 87               PSHA  
+  0001 89               PSHX  
+  0002          L2:     
+   54:     unsigned char c;
+   55:  
+   56:     while(!kbhit());
+  0002 95               TSX   
+  0003 e601             LDA   1,X
+  0005 fe               LDX   ,X
+  0006 ad00             BSR   kbhit
+  0008 4d               TSTA  
+  0009 27f7             BEQ   L2 ;abs = 0002
+   57:     c=_ptrBuffer[_next_out];
+  000b 95               TSX   
+  000c f6               LDA   ,X
+  000d 87               PSHA  
+  000e ee01             LDX   1,X
+  0010 8a               PULH  
+  0011 e601             LDA   1,X
+  0013 eb05             ADD   5,X
+  0015 87               PSHA  
+  0016 e604             LDA   4,X
+  0018 f9               ADC   ,X
+  0019 87               PSHA  
+  001a 8a               PULH  
+  001b 88               PULX  
+  001c f6               LDA   ,X
+   58:     _next_out=(_next_out+1) & BUFFER_SIZE;
+  001d 95               TSX   
+  001e fe               LDX   ,X
+  001f 89               PSHX  
+  0020 95               TSX   
+  0021 ee02             LDX   2,X
+  0023 8a               PULH  
+  0024 87               PSHA  
+  0025 e605             LDA   5,X
+  0027 4c               INCA  
+  0028 a407             AND   #7
+  002a e705             STA   5,X
+  002c 6f04             CLR   4,X
+   59:     return(c);
+  002e 86               PULA  
+   60:  }
+  002f a702             AIS   #2
+  0031 81               RTS   
+   61:  
+   62:  

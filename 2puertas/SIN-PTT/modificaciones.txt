@@ -1,0 +1,55 @@
+MODIFICACIONES PARA COBRA SISTEMAS PEDIDO Nº 3211
+-------------------------------------------------
+
+07/11/2003
+
+CAMBIOS GENERALES
+-----------------
+AHORA EL SUBTONO DE APERTURA PUERTA ES DE 123.0 EN VEZ DE 67.0
+ESTO ES DEBIDO A QUE EL PLL TARDABA DEMASIADO EN ENGANCHARSE.
+
+
+MODULO DE CASA
+---------------
+
+EL TIEMPO DE TRANSMISIÓN DEL SUBTONO DE APERTURA PUERTA, SERÁ MÍNIMO TRES SEGUNDOS, ANTES ESTABA A UNO.
+
+
+MÓDULO DE CALLE
+---------------
+
+LA RECEPCIÓN DE SUBTONOS SE HACE MEDIANTE LA TABLA "RX TONE PROGRAM"
+EN LA POSICIÓN 0 ESTÁ EL SUBTONO DE 100Hz. (Llamada)
+EN LA POSICIÓN 1 ESTÁ EL SUBTONO DE 123Hz. (Apertura)
+
+------------------------------------------------------------------------------------
+
+MODIFICACIONES PARA 2 PUERTAS
+------------------------------
+30/4/2004
+
+MÓDULO DE CASA
+--------------
+
+El pulsador de apertura se detecta por los pins PC4 y PC5
+Cuando detecta que llaman desde cualquier puerta, enciende el led correspondiente
+y lo apaga cuando descuelgan.
+
+Ahora el indicativo identifica a la puerta que llama, es decir, el módulo de casa
+ha de tener dos indicativos, uno para cada puerta.
+
+
+MÓDULO CALLE
+------------
+Ahora la apertura se realiza según el subtono.
+El nº de subtono identifica la puerta a abrir
+En la tabla de subtonos cargamos los dos subtonos de apertura de puerta,
+puerta1 = 123.0
+puerta2 = 127.3
+
+El PTT no se utiliza porque la comunicación es full duplex. (Siempre está en TX)
+Ahora el pin de PTT acciona el relé de la puerta 2.
+
+
+
+

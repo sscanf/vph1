@@ -1,0 +1,37 @@
+MODIFICACIONES PARA COBRA SISTEMAS PEDIDO Nº 3211
+-------------------------------------------------
+
+07/11/2003
+
+CAMBIOS GENERALES
+-----------------
+AHORA EL SUBTONO DE APERTURA PUERTA ES DE 123.0 EN VEZ DE 67.0
+ESTO ES DEBIDO A QUE EL PLL TARDABA DEMASIADO EN ENGANCHARSE.
+
+
+MODULO DE CASA
+---------------
+
+EL TIEMPO DE TRANSMISIÓN DEL SUBTONO DE APERTURA PUERTA, SERÁ MÍNIMO TRES SEGUNDOS, ANTES ESTABA A UNO.
+
+
+MÓDULO DE CALLE
+---------------
+
+LA RECEPCIÓN DE SUBTONOS SE HACE MEDIANTE LA TABLA "RX TONE PROGRAM"
+EN LA POSICIÓN 0 ESTÁ EL SUBTONO DE 100Hz. (Llamada)
+EN LA POSICIÓN 1 ESTÁ EL SUBTONO DE 123Hz. (Apertura)
+
+
+MODIFICACIONES REVISIÓN 3
+-------------------------
+
+- Ahora el SQL es mediante el subtono
+
+- Cuando está colgado (modo STANDBY), el decodificador de tonos se configura en modo SELCALL_MODE, y en la tabla 
+  se programan los 15 tonos en.
+  
+- Cuando descuelgan entra en modo COMUNITATION, entonces configura el decodificador en modo CTCSS_MODE, y en la primera
+  posición de la tabla programa el subtono de SQL.
+  
+  

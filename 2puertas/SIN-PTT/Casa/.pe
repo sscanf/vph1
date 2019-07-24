@@ -1,0 +1,16 @@
+Processor Expert Version 0289
+
+[Options]
+EventsDirectory=CODE\
+DestinationSubDir=
+DocumentationDir=DOC\
+CompiledFilesSubDir=
+FPGAsubdirectory=
+TemporaryDir=%TEMP%
+OverwriteEvents=3
+UseExistingModules=Yes
+RenamePeripheries=Yes
+Autodependency=Yes
+ProjectCompNumb=1
+
+[_end_]

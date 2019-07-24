@@ -1,0 +1,160 @@
+ANSI-C/cC++ Compiler for HC08 V-5.0.15, Apr 11 2002
+
+    1:  /*
+    2:  ** ###################################################################
+    3:  **
+    4:  **     Filename  : Events.C
+    5:  **
+    6:  **     Project   : vph1
+    7:  ** 
+    8:  **     Processor : MC68HC908GP32CFB
+    9:  **
+   10:  **     Beantype  : Events
+   11:  **
+   12:  **     Version   : Driver 01.00
+   13:  **
+   14:  **     Compiler  : Metrowerks HC08 C Compiler V-5.0.13
+   15:  **
+   16:  **     Date/Time : 11/3/miércoles, 9:18
+   17:  **
+   18:  **     Abstract  :
+   19:  **
+   20:  **         This is user's event module.
+   21:  **         Put your event handler code here.
+   22:  **
+   23:  **     Settings  :
+   24:  **
+   25:  **
+   26:  **     Contents  :
+   27:  **
+   28:  **         TIMER_OnInterrupt - void TIMER_OnInterrupt(void);
+   29:  **         IRQ_OnInterrupt   - void IRQ_OnInterrupt(void);
+   30:  **         Cpu_OnSwINT       - void Cpu_OnSwINT(void);
+   31:  **
+   32:  **
+   33:  **     (c) Copyright UNIS, spol. s r.o. 1997-2002
+   34:  **
+   35:  **     UNIS, spol. s r.o.
+   36:  **     Jundrovska 33
+   37:  **     624 00 Brno
+   38:  **     Czech Republic
+   39:  **
+   40:  **     http      : www.processorexpert.com
+   41:  **     mail      : info@processorexpert.com
+   42:  **
+   43:  ** ###################################################################
+   44:  */
+   45:  /* MODULE Events */
+   46:  
+   47:  #pragma MESSAGE DISABLE C1420 /* WARNING C1420: Result of function-call is ignored */
+   48:  
+   49:  
+   50:  /*Including used modules for compilling procedure*/
+   51:  #include "Cpu.h"
+   52:  #include "Events.h"
+   53:  #include "Teclado.h"
+   54:  #include "Terminal.h"
+   55:  #include "IRQ.h"
+   56:  #include "TIMER.h"
+   57:  
+   58:  /*Include shared modules, which are used for whole project*/
+   59:  #include "PE_Types.h"
+   60:  #include "PE_Error.h"
+   61:  #include "PE_Const.h"
+   62:  #include "IO_Map.h"
+   63:  
+   64:  /*
+   65:  ** ===================================================================
+   66:  **     Event       :  TIMER_OnInterrupt (module Events)
+   67:  **
+   68:  **     From bean   :  TIMER [TimerInt]
+   69:  **     Description :
+   70:  **         When a timer interrupt occurs this event is called (only
+   71:  **         when the bean is enabled - "Enable" and the events are
+   72:  **         enabled - "EnableEvent").
+   73:  **     Parameters  : None
+   74:  **     Returns     : Nothing
+   75:  ** ===================================================================
+   76:  */
+   77:  void TIMER_OnInterrupt(void)
+   78:  {
+
+Function: TIMER_OnInterrupt
+Source  : Z:\vph1\maestro\v4\Casa\Code\Events.C
+Options : -Cc -Env"GENPATH=Z:\vph1\maestro\v4\Casa;Z:\vph1\maestro\v4\Casa\bin;Z:\vph1\maestro\v4\Casa\cmd;*Z:\vph1\maestro\v4\Casa\Code;Z:\vph1\maestro\v4\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\maestro\v4\Comun;*Z:\vph1\maestro\v4;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\maestro\v4\Casa\bin -EnvTEXTPATH=Z:\vph1\maestro\v4\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\maestro\v4\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\Events.C.o -Qvtpfar -WmsgSd1106 -WmsgSd1420
+
+   79:  	even_timer = TRUE;
+  0000 a601             LDA   #1
+  0002 c70000           STA   even_timer
+   80:  	if (even_timeout)
+  0005 450000           LDHX  @even_timeout
+  0008 e603             LDA   3,X
+  000a ea02             ORA   2,X
+  000c ea01             ORA   1,X
+  000e fa               ORA   ,X
+  000f 2709             BEQ   L1A ;abs = 001a
+   81:  		even_timeout --;}
+  0011 450000           LDHX  @even_timeout
+  0014 cd0000           JSR   _LDEC
+  0017 cd0000           JSR   _POP32
+  001a          L1A:    
+  001a 81               RTS   
+   82:  
+   83:  
+   84:  /*
+   85:  ** ===================================================================
+   86:  **     Event       :  IRQ_OnInterrupt (module Events)
+   87:  **
+   88:  **     From bean   :  IRQ [ExtInt]
+   89:  **     Description :
+   90:  **         This event is called when the active signal edge/level
+   91:  **         occurs.
+   92:  **     Parameters  : None
+   93:  **     Returns     : Nothing
+   94:  ** ===================================================================
+   95:  */
+   96:  void IRQ_OnInterrupt(void)
+   97:  {
+
+Function: IRQ_OnInterrupt
+Source  : Z:\vph1\maestro\v4\Casa\Code\Events.C
+Options : -Cc -Env"GENPATH=Z:\vph1\maestro\v4\Casa;Z:\vph1\maestro\v4\Casa\bin;Z:\vph1\maestro\v4\Casa\cmd;*Z:\vph1\maestro\v4\Casa\Code;Z:\vph1\maestro\v4\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\maestro\v4\Comun;*Z:\vph1\maestro\v4;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\maestro\v4\Casa\bin -EnvTEXTPATH=Z:\vph1\maestro\v4\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\maestro\v4\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\Events.C.o -Qvtpfar -WmsgSd1106 -WmsgSd1420
+
+   98:  	MainIRQ();
+  0000 cc0000           JMP   MainIRQ
+   99:  }
+  100:  
+  101:  
+  102:  /*
+  103:  ** ===================================================================
+  104:  **     Event       :  Cpu_OnSwINT (module Events)
+  105:  **
+  106:  **     From bean   :  Cpu [MC68HC908GP32_44]
+  107:  **     Description :
+  108:  **         This software event is called after software reset.
+  109:  **     Parameters  : None
+  110:  **     Returns     : Nothing
+  111:  ** ===================================================================
+  112:  */
+  113:  void Cpu_OnSwINT(void)
+  114:  {
+
+Function: Cpu_OnSwINT
+Source  : Z:\vph1\maestro\v4\Casa\Code\Events.C
+Options : -Cc -Env"GENPATH=Z:\vph1\maestro\v4\Casa;Z:\vph1\maestro\v4\Casa\bin;Z:\vph1\maestro\v4\Casa\cmd;*Z:\vph1\maestro\v4\Casa\Code;Z:\vph1\maestro\v4\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\maestro\v4\Comun;*Z:\vph1\maestro\v4;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\maestro\v4\Casa\bin -EnvTEXTPATH=Z:\vph1\maestro\v4\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\maestro\v4\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\Events.C.o -Qvtpfar -WmsgSd1106 -WmsgSd1420
+
+  115:    /* Write your code here ... */
+  116:  }
+  0000 81               RTS   
+  117:  
+  118:  /* END Events */
+  119:  
+  120:  /*
+  121:  ** ###################################################################
+  122:  **
+  123:  **     This file was created by UNIS Processor Expert 02.89 for 
+  124:  **     the Motorola HC08 series of microcontrollers.
+  125:  **
+  126:  ** ###################################################################
+  127:  */
+  128:  

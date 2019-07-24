@@ -1,0 +1,1688 @@
+ANSI-C/cC++ Compiler for HC08 V-5.0.17, Apr 22 2003
+
+    1:  /*
+    2:  ** ###################################################################
+    3:  **
+    4:  **     Filename  : vph1.C
+    5:  **
+    6:  **     Project   : vph1
+    7:  ** 
+    8:  **     Processor : MC68HC908GP32CFB
+    9:  **
+
+Function: CBuffer::CBuffer( const CBuffer&)
+Source  : Z:\vph1\2puertas\Casa\Code\main.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\2puertas\Casa;Z:\vph1\2puertas\Casa\bin;Z:\vph1\2puertas\Casa\cmd;*Z:\vph1\2puertas\Casa\Code;Z:\vph1\2puertas\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\2puertas\Comun;*Z:\vph1\2puertas;Z:\vph1\2puertas\Casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\2puertas\Casa\bin -EnvTEXTPATH=Z:\vph1\2puertas\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\2puertas\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\main.cpp.o -Qvtpfar -WmsgSd1106
+
+
+No source information available for functions created by the compiler internally
+  0000 87               PSHA  
+  0001 89               PSHX  
+  0002 89               PSHX  
+  0003 8a               PULH  
+  0004 97               TAX   
+  0005 f6               LDA   ,X
+  0006 87               PSHA  
+  0007 95               TSX   
+  0008 e605             LDA   5,X
+  000a 87               PSHA  
+  000b ee06             LDX   6,X
+  000d 8a               PULH  
+  000e 86               PULA  
+  000f f7               STA   ,X
+  0010 ad32             BSR   L44 ;abs = 0044
+  0012 e601             LDA   1,X
+  0014 ad25             BSR   L3B ;abs = 003b
+  0016 e701             STA   1,X
+  0018 ad2a             BSR   L44 ;abs = 0044
+  001a e602             LDA   2,X
+  001c ad1d             BSR   L3B ;abs = 003b
+  001e e702             STA   2,X
+  0020 ad22             BSR   L44 ;abs = 0044
+  0022 e603             LDA   3,X
+  0024 ad15             BSR   L3B ;abs = 003b
+  0026 e703             STA   3,X
+  0028 ad1a             BSR   L44 ;abs = 0044
+  002a e604             LDA   4,X
+  002c ad0d             BSR   L3B ;abs = 003b
+  002e e704             STA   4,X
+  0030 ad12             BSR   L44 ;abs = 0044
+  0032 e605             LDA   5,X
+  0034 ad05             BSR   L3B ;abs = 003b
+  0036 e705             STA   5,X
+  0038 a702             AIS   #2
+  003a 81               RTS   
+  003b          L3B:    
+  003b 95               TSX   
+  003c ee06             LDX   6,X
+  003e 89               PSHX  
+  003f 95               TSX   
+  0040 ee08             LDX   8,X
+  0042 8a               PULH  
+  0043 81               RTS   
+  0044          L44:    
+  0044 95               TSX   
+  0045 e602             LDA   2,X
+  0047 87               PSHA  
+  0048 ee03             LDX   3,X
+  004a 8a               PULH  
+  004b 81               RTS   
+
+Function: CBuffer::operator =( const CBuffer&)
+Source  : Z:\vph1\2puertas\Casa\Code\main.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\2puertas\Casa;Z:\vph1\2puertas\Casa\bin;Z:\vph1\2puertas\Casa\cmd;*Z:\vph1\2puertas\Casa\Code;Z:\vph1\2puertas\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\2puertas\Comun;*Z:\vph1\2puertas;Z:\vph1\2puertas\Casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\2puertas\Casa\bin -EnvTEXTPATH=Z:\vph1\2puertas\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\2puertas\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\main.cpp.o -Qvtpfar -WmsgSd1106
+
+
+No source information available for functions created by the compiler internally
+  0000 87               PSHA  
+  0001 89               PSHX  
+  0002 89               PSHX  
+  0003 8a               PULH  
+  0004 97               TAX   
+  0005 f6               LDA   ,X
+  0006 ad2f             BSR   L37 ;abs = 0037
+  0008 f7               STA   ,X
+  0009 ad35             BSR   L40 ;abs = 0040
+  000b e601             LDA   1,X
+  000d ad28             BSR   L37 ;abs = 0037
+  000f e701             STA   1,X
+  0011 ad2d             BSR   L40 ;abs = 0040
+  0013 e602             LDA   2,X
+  0015 ad20             BSR   L37 ;abs = 0037
+  0017 e702             STA   2,X
+  0019 ad25             BSR   L40 ;abs = 0040
+  001b e603             LDA   3,X
+  001d ad18             BSR   L37 ;abs = 0037
+  001f e703             STA   3,X
+  0021 ad1d             BSR   L40 ;abs = 0040
+  0023 e604             LDA   4,X
+  0025 ad10             BSR   L37 ;abs = 0037
+  0027 e704             STA   4,X
+  0029 ad15             BSR   L40 ;abs = 0040
+  002b e605             LDA   5,X
+  002d ad08             BSR   L37 ;abs = 0037
+  002f e705             STA   5,X
+  0031 9f               TXA   
+  0032 8b               PSHH  
+  0033 88               PULX  
+  0034 a702             AIS   #2
+  0036 81               RTS   
+  0037          L37:    
+  0037 95               TSX   
+  0038 ee06             LDX   6,X
+  003a 89               PSHX  
+  003b 95               TSX   
+  003c ee08             LDX   8,X
+  003e 8a               PULH  
+  003f 81               RTS   
+  0040          L40:    
+  0040 95               TSX   
+  0041 e602             LDA   2,X
+  0043 87               PSHA  
+  0044 ee03             LDX   3,X
+  0046 8a               PULH  
+  0047 81               RTS   
+    1:  #include <ctype.h>
+    2:  #include "buffer.h"
+    3:  
+    4:  #define BUFFER_FULL	-2
+    5:  #define ERROR		-1
+    6:  
+    7:  #define	GENERAL_RESET			0x01
+    8:  #define SIGNALLING_CONTROL		0x80
+    9:  #define SELCALL_SUBAUDIO_STATUS 0x81
+   10:  #define	SIGNALLING_SETUP		0x82
+   11:  #define CTSS_TX_FAST_RX_FREQ	0x83
+   12:  #define	RX_TONE_PROGRAM			0x84
+   13:  #define	DCSbyte3				0x85
+   14:  #define	DCSbyte2				0x86
+   15:  #define	DCSbyte1				0x87
+   16:  #define GENERAL_CONTROL			0x88
+   17:  #define	AUDIO_CONTROL			0x8A
+   18:  #define GENERAL_PURPOSE_TIMER	0x8B
+   19:  #define	SELCALL_TX				0x8D
+   20:  #define	IRQ_MASK				0x8E
+   21:  #define IRQ_FLAG				0x8F
+   22:  
+   23:  #define CTCSS_MODE	 			0
+   24:  #define SELCALL_MODE 			1
+   25:  
+   26:  #define chip_select_ClrVal() (PTC &= ~64)
+   27:  #define chip_select_SetVal() (PTC |= 64)
+   28:  #define DataIn_GetVal() ((PTD) & 2)
+   29:  
+   30:  #define DETECT_MODE		0
+   31:  #define	PREDICTIVE_MODE	1
+   32:  #define	UNKNOWN_TONE	0x0f
+   33:  
+   34:  #ifdef __cplusplus
+   35:  
+   36:  class CFX828
+   37:  {
+   38:  	public:
+   39:  		CFX828 ();
+   40:  		~CFX828 ();
+   41:  		
+   42:  		void Init ();
+   43:  		int  TxZVEI (const unsigned char *);
+   44:  		int	 TxZVEI (const unsigned char tono);
+   45:  		BOOL IsTxBufferEmpty();
+   46:  		void ProgramFastCTCSS (float tono);
+   47:  		void CTCSS_tx_enable (unsigned char enable);
+   48:  		void PutToneTable (unsigned char pos, int tono);
+   49:  		void SetDecoderBandwidth (unsigned char width);
+   50:  		void EnableToneDecoder (BOOL enable, BOOL mode);
+   51:  		void EnableCTCSSDecoder (BOOL enable, BOOL mode);
+   52:  		void IRQService ();
+   53:  		char GetTone ();
+   54:  		BOOL CTCSS_Detected (void);
+   55:  		void SetRepeatTone (unsigned char tono = 0xe) {_RepeatTone = tono;}
+
+Function: CFX828::SetRepeatTone( unsigned char)
+Source  : Z:\vph1\2puertas\Comun\fx828.h
+Options : -Cc -Env"GENPATH=Z:\vph1\2puertas\Casa;Z:\vph1\2puertas\Casa\bin;Z:\vph1\2puertas\Casa\cmd;*Z:\vph1\2puertas\Casa\Code;Z:\vph1\2puertas\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\2puertas\Comun;*Z:\vph1\2puertas;Z:\vph1\2puertas\Casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\2puertas\Casa\bin -EnvTEXTPATH=Z:\vph1\2puertas\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\2puertas\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\main.cpp.o -Qvtpfar -WmsgSd1106
+
+  0000 87               PSHA  
+  0001 95               TSX   
+  0002 e603             LDA   3,X
+  0004 87               PSHA  
+  0005 ee04             LDX   4,X
+  0007 9ee602           LDA   2,SP
+  000a 8a               PULH  
+  000b e704             STA   4,X
+  000d 8a               PULH  
+  000e 81               RTS   
+
+Function: CFX828::CFX828( const CFX828&)
+Source  : Z:\vph1\2puertas\Casa\Code\main.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\2puertas\Casa;Z:\vph1\2puertas\Casa\bin;Z:\vph1\2puertas\Casa\cmd;*Z:\vph1\2puertas\Casa\Code;Z:\vph1\2puertas\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\2puertas\Comun;*Z:\vph1\2puertas;Z:\vph1\2puertas\Casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\2puertas\Casa\bin -EnvTEXTPATH=Z:\vph1\2puertas\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\2puertas\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\main.cpp.o -Qvtpfar -WmsgSd1106
+
+
+No source information available for functions created by the compiler internally
+  0000 87               PSHA  
+  0001 89               PSHX  
+  0002 89               PSHX  
+  0003 8a               PULH  
+  0004 97               TAX   
+  0005 f6               LDA   ,X
+  0006 87               PSHA  
+  0007 95               TSX   
+  0008 e605             LDA   5,X
+  000a 87               PSHA  
+  000b ee06             LDX   6,X
+  000d 8a               PULH  
+  000e 86               PULA  
+  000f f7               STA   ,X
+  0010 ad2a             BSR   L3C ;abs = 003c
+  0012 e601             LDA   1,X
+  0014 ad1d             BSR   L33 ;abs = 0033
+  0016 e701             STA   1,X
+  0018 ad22             BSR   L3C ;abs = 003c
+  001a e602             LDA   2,X
+  001c ad15             BSR   L33 ;abs = 0033
+  001e e702             STA   2,X
+  0020 ad1a             BSR   L3C ;abs = 003c
+  0022 e603             LDA   3,X
+  0024 ad0d             BSR   L33 ;abs = 0033
+  0026 e703             STA   3,X
+  0028 ad12             BSR   L3C ;abs = 003c
+  002a e604             LDA   4,X
+  002c ad05             BSR   L33 ;abs = 0033
+  002e e704             STA   4,X
+  0030 a702             AIS   #2
+  0032 81               RTS   
+  0033          L33:    
+  0033 95               TSX   
+  0034 ee06             LDX   6,X
+  0036 89               PSHX  
+  0037 95               TSX   
+  0038 ee08             LDX   8,X
+  003a 8a               PULH  
+  003b 81               RTS   
+  003c          L3C:    
+  003c 95               TSX   
+  003d e602             LDA   2,X
+  003f 87               PSHA  
+  0040 ee03             LDX   3,X
+  0042 8a               PULH  
+  0043 81               RTS   
+
+Function: CFX828::operator =( const CFX828&)
+Source  : Z:\vph1\2puertas\Casa\Code\main.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\2puertas\Casa;Z:\vph1\2puertas\Casa\bin;Z:\vph1\2puertas\Casa\cmd;*Z:\vph1\2puertas\Casa\Code;Z:\vph1\2puertas\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\2puertas\Comun;*Z:\vph1\2puertas;Z:\vph1\2puertas\Casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\2puertas\Casa\bin -EnvTEXTPATH=Z:\vph1\2puertas\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\2puertas\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\main.cpp.o -Qvtpfar -WmsgSd1106
+
+
+No source information available for functions created by the compiler internally
+  0000 87               PSHA  
+  0001 89               PSHX  
+  0002 89               PSHX  
+  0003 8a               PULH  
+  0004 97               TAX   
+  0005 f6               LDA   ,X
+  0006 ad27             BSR   L2F ;abs = 002f
+  0008 f7               STA   ,X
+  0009 ad2d             BSR   L38 ;abs = 0038
+  000b e601             LDA   1,X
+  000d ad20             BSR   L2F ;abs = 002f
+  000f e701             STA   1,X
+  0011 ad25             BSR   L38 ;abs = 0038
+  0013 e602             LDA   2,X
+  0015 ad18             BSR   L2F ;abs = 002f
+  0017 e702             STA   2,X
+  0019 ad1d             BSR   L38 ;abs = 0038
+  001b e603             LDA   3,X
+  001d ad10             BSR   L2F ;abs = 002f
+  001f e703             STA   3,X
+  0021 ad15             BSR   L38 ;abs = 0038
+  0023 e604             LDA   4,X
+  0025 ad08             BSR   L2F ;abs = 002f
+  0027 e704             STA   4,X
+  0029 9f               TXA   
+  002a 8b               PSHH  
+  002b 88               PULX  
+  002c a702             AIS   #2
+  002e 81               RTS   
+  002f          L2F:    
+  002f 95               TSX   
+  0030 ee06             LDX   6,X
+  0032 89               PSHX  
+  0033 95               TSX   
+  0034 ee08             LDX   8,X
+  0036 8a               PULH  
+  0037 81               RTS   
+  0038          L38:    
+  0038 95               TSX   
+  0039 e602             LDA   2,X
+  003b 87               PSHA  
+  003c ee03             LDX   3,X
+  003e 8a               PULH  
+  003f 81               RTS   
+   10:  **     Version   : Driver 01.00
+   11:  **
+   12:  **     Compiler  : Metrowerks HC08 C Compiler V-5.0.13
+   13:  **
+   14:  **     Date/Time : 4/17/jueves, 15:23
+   15:  **
+   16:  **     Abstract  :
+   17:  **
+   18:  **         Main module. 
+   19:  **         Here is to be placed user's code.
+   20:  **
+   21:  **     Settings  :
+   22:  **
+   23:  **
+   24:  **     Contents  :
+   25:  **
+   26:  **         No public methods
+   27:  **
+   28:  **
+   29:  **     (c) Copyright UNIS, spol. s r.o. 1997-2002
+   30:  **
+   31:  **     UNIS, spol. s r.o.
+   32:  **     Jundrovska 33
+   33:  **     624 00 Brno
+   34:  **     Czech Republic
+   35:  **
+   36:  **     http      : www.processorexpert.com
+   37:  **     mail      : info@processorexpert.com
+   38:  **
+   39:  ** ###################################################################
+   40:  */
+   41:  /* MODULE vph1 */
+   42:  
+   43:  // PARA QUE SE LINKE CORRECTAMENTE ASEGURARSE DE QUE LA SIGUIENTE LINEA EXISTE EN EL ARCHIVO VPH1.PRM
+   44:  //     HEAP_SEGMENT					 INTO  HEAP;
+   45:  
+   46:  //#pragma MESSAGE DISABLE C1420 /* WARNING C1420: Result of function-call is ignored. You can uncomment this line to disable this compiler warning */
+   47:  
+   48:  /*Including used modules for compilling procedure*/
+   49:  #include "vph1.h"
+   50:  #include "Cpu.h"
+   51:  #include "Events.h"
+   52:  #include "TIMER.h"
+   53:  #include "IRQ.h"
+   54:  /*Include shared modules, which are used for whole project*/
+   55:  #include "PE_Types.h"
+   56:  #include "PE_Error.h"
+   57:  #include "PE_Const.h"
+   58:  #include "IO_Map.h"
+   59:  #include <stdio.h>
+   60:  #include <ctype.h>
+   61:  #include "delay.h"
+   62:  #include "maincpp.h"
+   63:  #include "io_map.h"
+   64:  #include "APERTURA.h"
+   65:  
+   66:  #include "fx828.h"
+   67:  
+   68:  #define CTCSS_100	12
+   69:  #define CTCSS_110	16
+   70:  
+   71:  #define COLGADO		PTA_PTA6
+   72:  #define PTT_ON		PTC_PTC2 = 0
+   73:  #define PTT_OFF		PTC_PTC2 = 1
+   74:  #define BEEP_ON		PTB_PTB7 = 1
+   75:  #define BEEP_OFF	PTB_PTB7 = 0
+   76:  
+   77:  #define LED_PUERTA1	PTB_PTB6
+   78:  #define LED_PUERTA2	PTB_PTB5
+   79:  
+   80:  
+   81:  extern "C" byte Terminal_SendChar(byte Chr);
+   82:  
+   83:  unsigned int const_indicativo_puerta1[1] @0xf700;
+   84:  unsigned int const_indicativo_puerta2[1] @0xf702;
+   85:  
+   86:  
+   87:  const float TxCTCSSTable[]={123.0,127.3,131.8,136.5,141.3,146.2,151.4,156.7,
+   88:  159.8,162.2,167.9,173.8,179.9,183.5,186.2,189.9,192.8,196.6,199.1,203.5,206.5,
+   89:  210.7,218.1,225.7,229.1,233.6,241.8,250.3,254.1};
+   90:  
+   91:  
+   92:  const int RxCTCSSTable[47]={0x3d8,	/*67.0*/ 0x409,	/*69.3*/ 0x41b,	/*71.9*/
+   93:  							0x44e,	/*74.4*/ 0x483,	/*77.0*/ 0x494,	/*79.7*/
+   94:  							0x4cb,	/*82.5*/ 0x502,	/*85.4*/ 0x514,	/*88.5*/
+   95:  							0x54c,	/*91.5*/ 0x587,	/*94.8*/ 0x594,	/*97.4*/
+   96:  							0x5cb,	/*100.0*/0x607,	/*103.5*/0x645,	/*107.2*/
+   97:  							0x682,	/*110.9*/0x6c0,	/*114.8*/0x6d1,	/*118.8*/
+   98:  							0x710,	/*123.0*/0x750,	/*127.3*/0x7c0,	/*131.8*/
+   99:  							0x802,	/*136.5*/0x884,	/*141.3*/0x886,	/*146.2*/
+  100:  							0x8c9,	/*151.4*/0x90c,	/*156.7*/0x948,	/*159.8*/
+  101:  							0x982,	/*162.2*/0x9c6,	/*167.9*/0xa0b,	/*173.8*/
+  102:  							0xa84,	/*179.9*/0xac2,	/*183.5*/0xac9,	/*186.2*/
+  103:  							0xb08,	/*189.9*/0xb44,	/*192.8*/0xb83,	/*196.6*/
+  104:  							0xb8a,	/*199.5*/0xbc9,	/*203.5*/0xc06,	/*206.5*/
+  105:  							0xc46,	/*210.7*/0xcc3,	/*218.1*/0xd41,	/*225.7*/
+  106:  							0xd48,	/*229.1*/0xd89,	/*233.6*/0xe08,	/*241.8*/
+  107:  							0xe88,	/*250.3*/0xec7};/*254.1*/
+  108:  								 
+  109:  const int RxZVEI1Table[15]={0xc44,	/*2400 0*/
+  110:  							0x553,	/*1060 1*/
+  111:  							0x5d2,	/*1160 2*/
+  112:  							0x683,	/*1270 3*/
+  113:  							0x70e,	/*1400 4*/
+  114:  							0x7c8,	/*1530 5*/
+  115:  							0x886,	/*1670 6*/
+  116:  							0x949,	/*1830 7*/
+  117:  							0xa42,	/*2000 8*/
+  118:  							0xb43,	/*2200 9*/
+  119:  							0xe46,	/*2800 A*/
+  120:  							0x414,	/*810  B*/
+  121:  							0x4d8,	/*970  C*/
+  122:  							0x486,	/*885  D*/
+  123:  							0xd45};	/*2600 E*/
+  124:  
+  125:  
+  126:  bool SelCallDetected;
+  127:  bool CTCSSDetected;
+  128:  byte UltimaPuerta;
+  129:  
+  130:  union 		//Indicativo recibido
+  131:  {
+  132:  	struct
+  133:  	{
+  134:  		char low	:8;
+  135:  		char high	:8;
+  136:  	}_byte;
+  137:  	int valor;
+  138:  	
+  139:  }IndicRx;
+  140:  
+  141:  void PutString (char *string)
+  142:  {
+
+Function: PutString( unsigned char*)
+Source  : Z:\vph1\2puertas\Casa\Code\main.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\2puertas\Casa;Z:\vph1\2puertas\Casa\bin;Z:\vph1\2puertas\Casa\cmd;*Z:\vph1\2puertas\Casa\Code;Z:\vph1\2puertas\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\2puertas\Comun;*Z:\vph1\2puertas;Z:\vph1\2puertas\Casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\2puertas\Casa\bin -EnvTEXTPATH=Z:\vph1\2puertas\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\2puertas\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\main.cpp.o -Qvtpfar -WmsgSd1106
+
+  0000 87               PSHA  
+  0001 89               PSHX  
+  0002 a7fe             AIS   #-2
+  143:  	int n;
+  144:  	for (n=0;string[n]!=0;n++)
+  0004 95               TSX   
+  0005 6f01             CLR   1,X
+  0007 7f               CLR   ,X
+  0008 200f             BRA   L19 ;abs = 0019
+  000a          LA:     
+  000a ad15             BSR   L21 ;abs = 0021
+  145:  		while (Terminal_SendChar (string[n])==ERR_TXFULL);
+  000c f6               LDA   ,X
+  000d cd0000           JSR   Terminal_SendChar
+  0010 410bf7           CBEQA #11,LA ;abs = 000a
+  0013 95               TSX   
+  0014 6c01             INC   1,X
+  0016 2601             BNE   L19 ;abs = 0019
+  0018 7c               INC   ,X
+  0019          L19:    
+  0019 ad06             BSR   L21 ;abs = 0021
+  001b 7d               TST   ,X
+  001c 26ec             BNE   LA ;abs = 000a
+  146:  }
+  001e a704             AIS   #4
+  0020 81               RTS   
+  0021          L21:    
+  0021 95               TSX   
+  0022 e605             LDA   5,X
+  0024 eb03             ADD   3,X
+  0026 87               PSHA  
+  0027 e602             LDA   2,X
+  0029 e904             ADC   4,X
+  002b 87               PSHA  
+  002c 8a               PULH  
+  002d 88               PULX  
+  002e 81               RTS   
+  147:  
+  148:  CFX828 FX828;
+  149:  
+  150:  void EnableTX (bool enable)
+  151:  {
+
+Function: EnableTX( unsigned char)
+Source  : Z:\vph1\2puertas\Casa\Code\main.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\2puertas\Casa;Z:\vph1\2puertas\Casa\bin;Z:\vph1\2puertas\Casa\cmd;*Z:\vph1\2puertas\Casa\Code;Z:\vph1\2puertas\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\2puertas\Comun;*Z:\vph1\2puertas;Z:\vph1\2puertas\Casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\2puertas\Casa\bin -EnvTEXTPATH=Z:\vph1\2puertas\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\2puertas\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\main.cpp.o -Qvtpfar -WmsgSd1106
+
+  0000 87               PSHA  
+  152:  	FX828.Mod1Enable (enable);
+  0001 450000           LDHX  @FX828
+  0004 89               PSHX  
+  0005 8b               PSHH  
+  0006 ae1f             LDX   #31
+  0008 cd0000           JSR   Mod1Enable
+  000b a702             AIS   #2
+  153:  //	FX828.Mod2Enable (~enable);
+  154:  	FX828.CTCSS_tx_enable (enable);	//Fin transmisión
+  000d 450000           LDHX  @FX828
+  0010 89               PSHX  
+  0011 8b               PSHH  
+  0012 95               TSX   
+  0013 e602             LDA   2,X
+  0015 cd0000           JSR   CTCSS_tx_enable
+  0018 a702             AIS   #2
+  155:  	PTC_PTC2 = ~enable;
+  001a 95               TSX   
+  001b f6               LDA   ,X
+  001c a501             BIT   #1
+  001e 2604             BNE   L24 ;abs = 0024
+  0020 1400             BSET  2,_PTC
+  156:  }
+  0022 8a               PULH  
+  0023 81               RTS   
+  0024          L24:    
+  0024 1500             BCLR  2,_PTC
+  0026 8a               PULH  
+  0027 81               RTS   
+  157:  
+  158:  //TIMBRE
+  159:  void GeneraTimbre (void)
+  160:  {
+
+Function: GeneraTimbre( void)
+Source  : Z:\vph1\2puertas\Casa\Code\main.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\2puertas\Casa;Z:\vph1\2puertas\Casa\bin;Z:\vph1\2puertas\Casa\cmd;*Z:\vph1\2puertas\Casa\Code;Z:\vph1\2puertas\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\2puertas\Comun;*Z:\vph1\2puertas;Z:\vph1\2puertas\Casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\2puertas\Casa\bin -EnvTEXTPATH=Z:\vph1\2puertas\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\2puertas\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\main.cpp.o -Qvtpfar -WmsgSd1106
+
+  0000 a7fc             AIS   #-4
+  161:  	int n,i;
+  162:  	
+  163:  	FX828.EnableToneDecoder (FALSE,SELCALL_MODE);
+  0002 450000           LDHX  @FX828
+  0005 89               PSHX  
+  0006 8b               PSHH  
+  0007 4f               CLRA  
+  0008 ae01             LDX   #1
+  000a cd0000           JSR   EnableToneDecoder
+  000d a702             AIS   #2
+  164:  	SelCallDetected = FALSE;
+  000f 4f               CLRA  
+  0010 c70000           STA   SelCallDetected
+  165:  	for (n=0;n<5 && COLGADO;n++)
+  0013 95               TSX   
+  0014 6f03             CLR   3,X
+  0016 6f02             CLR   2,X
+  0018 203f             BRA   L59 ;abs = 0059
+  001a          L1A:    
+  166:  	{
+  167:  		BEEP_ON;
+  001a 1e00             BSET  7,_PTB
+  168:  		for (i=0;i<500 && COLGADO;i++)
+  001c 95               TSX   
+  001d 6f01             CLR   1,X
+  001f 7f               CLR   ,X
+  0020 2006             BRA   L28 ;abs = 0028
+  0022          L22:    
+  0022 ad51             BSR   L75 ;abs = 0075
+  0024 95               TSX   
+  0025 2601             BNE   L28 ;abs = 0028
+  0027 7c               INC   ,X
+  0028          L28:    
+  0028 95               TSX   
+  0029 f6               LDA   ,X
+  002a 87               PSHA  
+  002b ee01             LDX   1,X
+  002d 8a               PULH  
+  002e 6501f4           CPHX  #500
+  0031 9003             BGE   L36 ;abs = 0036
+  0033 0c00ec           BRSET 6,_PTA,L22 ;abs = 0022
+  0036          L36:    
+  169:  			delay_ms(1);
+  170:  		BEEP_OFF;
+  0036 1f00             BCLR  7,_PTB
+  171:  		for (i=0;i<200 && COLGADO;i++)
+  0038 95               TSX   
+  0039 6f01             CLR   1,X
+  003b 7f               CLR   ,X
+  003c 2006             BRA   L44 ;abs = 0044
+  003e          L3E:    
+  003e ad35             BSR   L75 ;abs = 0075
+  0040 95               TSX   
+  0041 2601             BNE   L44 ;abs = 0044
+  0043 7c               INC   ,X
+  0044          L44:    
+  0044 95               TSX   
+  0045 f6               LDA   ,X
+  0046 87               PSHA  
+  0047 ee01             LDX   1,X
+  0049 8a               PULH  
+  004a 6500c8           CPHX  #200
+  004d 9003             BGE   L52 ;abs = 0052
+  004f 0c00ec           BRSET 6,_PTA,L3E ;abs = 003e
+  0052          L52:    
+  0052 95               TSX   
+  0053 6c03             INC   3,X
+  0055 2602             BNE   L59 ;abs = 0059
+  0057 6c02             INC   2,X
+  0059          L59:    
+  0059 e602             LDA   2,X
+  005b 87               PSHA  
+  005c ee03             LDX   3,X
+  005e 8a               PULH  
+  005f 650005           CPHX  #5
+  0062 9003             BGE   L67 ;abs = 0067
+  0064 0c00b3           BRSET 6,_PTA,L1A ;abs = 001a
+  0067          L67:    
+  172:  			delay_ms(1);
+  173:  	}
+  174:  	FX828.EnableToneDecoder (TRUE,SELCALL_MODE);
+  0067 450000           LDHX  @FX828
+  006a 89               PSHX  
+  006b 8b               PSHH  
+  006c a601             LDA   #1
+  006e 97               TAX   
+  006f cd0000           JSR   EnableToneDecoder
+  175:  }
+  0072 a706             AIS   #6
+  0074 81               RTS   
+  0075          L75:    
+  0075 a601             LDA   #1
+  0077 5f               CLRX  
+  0078 cd0000           JSR   delay_ms
+  007b 95               TSX   
+  007c 6c03             INC   3,X
+  007e 81               RTS   
+  176:  
+  177:  void ErrorIndicativo(void)
+  178:  {
+
+Function: ErrorIndicativo( void)
+Source  : Z:\vph1\2puertas\Casa\Code\main.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\2puertas\Casa;Z:\vph1\2puertas\Casa\bin;Z:\vph1\2puertas\Casa\cmd;*Z:\vph1\2puertas\Casa\Code;Z:\vph1\2puertas\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\2puertas\Comun;*Z:\vph1\2puertas;Z:\vph1\2puertas\Casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\2puertas\Casa\bin -EnvTEXTPATH=Z:\vph1\2puertas\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\2puertas\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\main.cpp.o -Qvtpfar -WmsgSd1106
+
+  0000 a7fe             AIS   #-2
+  179:  	int n;
+  180:  	FX828.Mod2Enable (TRUE);
+  0002 450000           LDHX  @FX828
+  0005 89               PSHX  
+  0006 8b               PSHH  
+  0007 a601             LDA   #1
+  0009 ae1f             LDX   #31
+  000b cd0000           JSR   Mod2Enable
+  000e a702             AIS   #2
+  181:  	FX828.EnableToneDecoder (FALSE,SELCALL_MODE);
+  0010 450000           LDHX  @FX828
+  0013 89               PSHX  
+  0014 8b               PSHH  
+  0015 4f               CLRA  
+  0016 ae01             LDX   #1
+  0018 cd0000           JSR   EnableToneDecoder
+  001b a702             AIS   #2
+  182:  	FX828.ZVEI_tx_enable (TRUE);
+  001d 450000           LDHX  @FX828
+  0020 89               PSHX  
+  0021 8b               PSHH  
+  0022 a601             LDA   #1
+  0024 cd0000           JSR   ZVEI_tx_enable
+  0027 a702             AIS   #2
+  0029          L29:    
+  183:  
+  184:  	while (TRUE)	//Mientras esté descolgado
+  185:  	{
+  186:  		for (n=100;n<300;n++)
+  0029 a664             LDA   #100
+  002b 95               TSX   
+  002c e701             STA   1,X
+  002e 7f               CLR   ,X
+  002f          L2F:    
+  187:  			FX828.ProgramZVEI(n);	
+  002f 95               TSX   
+  0030 e601             LDA   1,X
+  0032 fe               LDX   ,X
+  0033 87               PSHA  
+  0034 cd0000           JSR   _SEXT16_32
+  0037 95               TSX   
+  0038 cd0000           JSR   _FSFLOAT
+  003b 450000           LDHX  @FX828
+  003e 89               PSHX  
+  003f 8b               PSHH  
+  0040 95               TSX   
+  0041 e605             LDA   5,X
+  0043 87               PSHA  
+  0044 e604             LDA   4,X
+  0046 87               PSHA  
+  0047 e603             LDA   3,X
+  0049 87               PSHA  
+  004a e602             LDA   2,X
+  004c 87               PSHA  
+  004d cd0000           JSR   ProgramZVEI
+  0050 a706             AIS   #6
+  0052 95               TSX   
+  0053 6c09             INC   9,X
+  0055 2602             BNE   L59 ;abs = 0059
+  0057 6c08             INC   8,X
+  0059          L59:    
+  0059 e608             LDA   8,X
+  005b 87               PSHA  
+  005c ee09             LDX   9,X
+  005e 8a               PULH  
+  005f 65012c           CPHX  #300
+  0062 a708             AIS   #8
+  0064 90c3             BGE   L29 ;abs = 0029
+  0066 20c7             BRA   L2F ;abs = 002f
+  188:  	}
+  189:  }
+  190:  
+  191:  //TONOS INDICACIÓN DESCONEXIÓN
+  192:  void UnlinkSignal(void)
+  193:  {
+
+Function: UnlinkSignal( void)
+Source  : Z:\vph1\2puertas\Casa\Code\main.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\2puertas\Casa;Z:\vph1\2puertas\Casa\bin;Z:\vph1\2puertas\Casa\cmd;*Z:\vph1\2puertas\Casa\Code;Z:\vph1\2puertas\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\2puertas\Comun;*Z:\vph1\2puertas;Z:\vph1\2puertas\Casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\2puertas\Casa\bin -EnvTEXTPATH=Z:\vph1\2puertas\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\2puertas\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\main.cpp.o -Qvtpfar -WmsgSd1106
+
+  194:  	FX828.Mod2Enable (TRUE);
+  0000 450000           LDHX  @FX828
+  0003 89               PSHX  
+  0004 8b               PSHH  
+  0005 a601             LDA   #1
+  0007 ae1f             LDX   #31
+  0009 cd0000           JSR   Mod2Enable
+  000c a702             AIS   #2
+  195:  	FX828.ProgramZVEI(400.0);	
+  000e 450000           LDHX  @FX828
+  0011 89               PSHX  
+  0012 8b               PSHH  
+  0013 4f               CLRA  
+  0014 87               PSHA  
+  0015 87               PSHA  
+  0016 4543c8           LDHX  #17352
+  0019 89               PSHX  
+  001a 8b               PSHH  
+  001b cd0000           JSR   ProgramZVEI
+  001e a706             AIS   #6
+  196:  	FX828.EnableToneDecoder (FALSE,SELCALL_MODE);
+  0020 450000           LDHX  @FX828
+  0023 89               PSHX  
+  0024 8b               PSHH  
+  0025 4f               CLRA  
+  0026 ae01             LDX   #1
+  0028 cd0000           JSR   EnableToneDecoder
+  002b a702             AIS   #2
+  197:  
+  198:  	while (!COLGADO)	//Mientras esté descolgado
+  002d 2023             BRA   L52 ;abs = 0052
+  002f          L2F:    
+  199:  	{
+  200:  		FX828.ZVEI_tx_enable (TRUE);
+  002f 450000           LDHX  @FX828
+  0032 89               PSHX  
+  0033 8b               PSHH  
+  0034 a601             LDA   #1
+  0036 cd0000           JSR   ZVEI_tx_enable
+  0039 a702             AIS   #2
+  201:  		delay_ms(100);
+  003b a664             LDA   #100
+  003d 5f               CLRX  
+  003e cd0000           JSR   delay_ms
+  202:  		FX828.ZVEI_tx_enable (FALSE);
+  0041 450000           LDHX  @FX828
+  0044 89               PSHX  
+  0045 8b               PSHH  
+  0046 4f               CLRA  
+  0047 cd0000           JSR   ZVEI_tx_enable
+  004a a702             AIS   #2
+  203:  		delay_ms(100);
+  004c a664             LDA   #100
+  004e 5f               CLRX  
+  004f cd0000           JSR   delay_ms
+  0052          L52:    
+  0052 0d00da           BRCLR 6,_PTA,L2F ;abs = 002f
+  204:  	}
+  205:  
+  206:  //	FX828.Mod2Enable (FALSE);
+  207:  }
+  0055 81               RTS   
+  208:  
+  209:  //TONOS INDICACIÓN LÍNEA OCUPADA
+  210:  void BussySignal(void)
+  211:  {
+
+Function: BussySignal( void)
+Source  : Z:\vph1\2puertas\Casa\Code\main.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\2puertas\Casa;Z:\vph1\2puertas\Casa\bin;Z:\vph1\2puertas\Casa\cmd;*Z:\vph1\2puertas\Casa\Code;Z:\vph1\2puertas\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\2puertas\Comun;*Z:\vph1\2puertas;Z:\vph1\2puertas\Casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\2puertas\Casa\bin -EnvTEXTPATH=Z:\vph1\2puertas\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\2puertas\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\main.cpp.o -Qvtpfar -WmsgSd1106
+
+  212:  	FX828.Mod2Enable (TRUE,0x1f);
+  0000 450000           LDHX  @FX828
+  0003 89               PSHX  
+  0004 8b               PSHH  
+  0005 a601             LDA   #1
+  0007 ae1f             LDX   #31
+  0009 cd0000           JSR   Mod2Enable
+  000c a702             AIS   #2
+  213:  	FX828.ProgramZVEI(400.0);	
+  000e 450000           LDHX  @FX828
+  0011 89               PSHX  
+  0012 8b               PSHH  
+  0013 4f               CLRA  
+  0014 87               PSHA  
+  0015 87               PSHA  
+  0016 4543c8           LDHX  #17352
+  0019 89               PSHX  
+  001a 8b               PSHH  
+  001b cd0000           JSR   ProgramZVEI
+  001e a706             AIS   #6
+  214:  	FX828.EnableToneDecoder (FALSE,SELCALL_MODE);
+  0020 450000           LDHX  @FX828
+  0023 89               PSHX  
+  0024 8b               PSHH  
+  0025 4f               CLRA  
+  0026 ae01             LDX   #1
+  0028 cd0000           JSR   EnableToneDecoder
+  002b a702             AIS   #2
+  215:  
+  216:  	while (!COLGADO)	//Mientras esté descolgado
+  002d 2025             BRA   L54 ;abs = 0054
+  002f          L2F:    
+  217:  	{
+  218:  		FX828.ZVEI_tx_enable (TRUE);
+  002f 450000           LDHX  @FX828
+  0032 89               PSHX  
+  0033 8b               PSHH  
+  0034 a601             LDA   #1
+  0036 cd0000           JSR   ZVEI_tx_enable
+  0039 a702             AIS   #2
+  219:  		delay_ms(500);
+  003b a6f4             LDA   #-12
+  003d ae01             LDX   #1
+  003f cd0000           JSR   delay_ms
+  220:  		FX828.ZVEI_tx_enable (FALSE);
+  0042 450000           LDHX  @FX828
+  0045 89               PSHX  
+  0046 8b               PSHH  
+  0047 4f               CLRA  
+  0048 cd0000           JSR   ZVEI_tx_enable
+  004b a702             AIS   #2
+  221:  		delay_ms(500);
+  004d a6f4             LDA   #-12
+  004f ae01             LDX   #1
+  0051 cd0000           JSR   delay_ms
+  0054          L54:    
+  0054 0d00d8           BRCLR 6,_PTA,L2F ;abs = 002f
+  222:  	}
+  223:  
+  224:  //	FX828.Mod2Enable (FALSE);
+  225:  
+  226:  }
+  0057 81               RTS   
+  227:  
+  228:  //Antes de abrir la puerta, nos aseguramos de los rebotes del pulsador
+  229:  //Si se mantienen altos fijos durante 100ms enviaremos el subtono de apertura
+  230:  //y devolveremos un TRUE.
+  231:  //En caso contrario devolvemos un FALSE sin ninguna acción.
+  232:  
+  233:  bool apertura(void)
+  234:  {
+
+Function: apertura( void)
+Source  : Z:\vph1\2puertas\Casa\Code\main.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\2puertas\Casa;Z:\vph1\2puertas\Casa\bin;Z:\vph1\2puertas\Casa\cmd;*Z:\vph1\2puertas\Casa\Code;Z:\vph1\2puertas\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\2puertas\Comun;*Z:\vph1\2puertas;Z:\vph1\2puertas\Casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\2puertas\Casa\bin -EnvTEXTPATH=Z:\vph1\2puertas\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\2puertas\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\main.cpp.o -Qvtpfar -WmsgSd1106
+
+  0000 a7fe             AIS   #-2
+  0002 ad73             BSR   L77 ;abs = 0077
+  235:  	char tmp=APERTURA_GetVal();
+  0004 95               TSX   
+  0005 e701             STA   1,X
+  236:  	char n;
+  237:  	char tono;
+  238:  
+  239:  //	FX828.Mod2Enable (FALSE);
+  240:  	//Bucle antirebotes	
+  241:  	for (n=0;n<10;n++)
+  0007 7f               CLR   ,X
+  0008          L8:     
+  242:  	{
+  243:  		delay_ms(1);
+  0008 a601             LDA   #1
+  000a 5f               CLRX  
+  000b cd0000           JSR   delay_ms
+  000e ad67             BSR   L77 ;abs = 0077
+  244:  		if (APERTURA_GetVal()!=tmp)
+  0010 95               TSX   
+  0011 e101             CMP   1,X
+  0013 2706             BEQ   L1B ;abs = 001b
+  245:  		{
+  246:  			n=0;
+  0015 7f               CLR   ,X
+  0016 ad5f             BSR   L77 ;abs = 0077
+  247:  			tmp=APERTURA_GetVal();
+  0018 95               TSX   
+  0019 e701             STA   1,X
+  001b          L1B:    
+  001b 95               TSX   
+  001c 7c               INC   ,X
+  001d f6               LDA   ,X
+  001e a10a             CMP   #10
+  0020 25e6             BCS   L8 ;abs = 0008
+  0022 ad53             BSR   L77 ;abs = 0077
+  248:  		}
+  249:  	}
+  250:  
+  251:  	if (APERTURA_GetVal())	//¿Ha estado la línea alta fija durante 10ms?
+  0024 274b             BEQ   L71 ;abs = 0071
+  252:  	{
+  253:  		EnableTX (TRUE);
+  0026 a601             LDA   #1
+  0028 cd0000           JSR   EnableTX
+  002b ad4a             BSR   L77 ;abs = 0077
+  254:  		FX828.ProgramFastCTCSS (TxCTCSSTable[APERTURA_GetVal()-1]); //Transmitimos subtono de apertura
+  002d 48               LSLA  
+  002e 48               LSLA  
+  002f 450000           LDHX  @FX828
+  0032 89               PSHX  
+  0033 8b               PSHH  
+  0034 8c               CLRH  
+  0035 97               TAX   
+  0036 deffff           LDX   @TxCTCSSTable:-1,X
+  0039 89               PSHX  
+  003a 97               TAX   
+  003b defffe           LDX   @TxCTCSSTable:-2,X
+  003e 89               PSHX  
+  003f 97               TAX   
+  0040 defffd           LDX   @TxCTCSSTable:-3,X
+  0043 89               PSHX  
+  0044 97               TAX   
+  0045 defffc           LDX   @TxCTCSSTable:-4,X
+  0048 89               PSHX  
+  0049 cd0000           JSR   ProgramFastCTCSS
+  004c a706             AIS   #6
+  255:  		delay_ms (3000);
+  004e a6b8             LDA   #-72
+  0050 ae0b             LDX   #11
+  0052 cd0000           JSR   delay_ms
+  0055          L55:    
+  0055 ad20             BSR   L77 ;abs = 0077
+  256:  		while (APERTURA_GetVal());	 //Mientras están pulsando el botón
+  0057 26fc             BNE   L55 ;abs = 0055
+  257:  		FX828.ProgramFastCTCSS (100); //Reestablecemos subtono
+  0059 450000           LDHX  @FX828
+  005c 89               PSHX  
+  005d 8b               PSHH  
+  005e 4f               CLRA  
+  005f 87               PSHA  
+  0060 87               PSHA  
+  0061 4542c8           LDHX  #17096
+  0064 89               PSHX  
+  0065 8b               PSHH  
+  0066 cd0000           JSR   ProgramFastCTCSS
+  0069 a706             AIS   #6
+  006b ad12             BSR   L7F ;abs = 007f
+  258:  		FX828.Mod2Enable (TRUE);
+  259:  		return TRUE;
+  006d a601             LDA   #1
+  006f 2003             BRA   L74 ;abs = 0074
+  0071          L71:    
+  0071 ad0c             BSR   L7F ;abs = 007f
+  260:  	}
+  261:  	FX828.Mod2Enable (TRUE);
+  262:  	return FALSE;
+  0073 4f               CLRA  
+  0074          L74:    
+  263:  }
+  0074 a702             AIS   #2
+  0076 81               RTS   
+  0077          L77:    
+  0077 b600             LDA   _PTC
+  0079 a430             AND   #48
+  007b 62               NSA   
+  007c a40f             AND   #15
+  007e 81               RTS   
+  007f          L7F:    
+  007f 450000           LDHX  @FX828
+  0082 89               PSHX  
+  0083 8b               PSHH  
+  0084 a601             LDA   #1
+  0086 ae1f             LDX   #31
+  0088 cd0000           JSR   Mod2Enable
+  008b a702             AIS   #2
+  008d 81               RTS   
+  264:  void comunicando (void)
+  265:  {
+
+Function: comunicando( void)
+Source  : Z:\vph1\2puertas\Casa\Code\main.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\2puertas\Casa;Z:\vph1\2puertas\Casa\bin;Z:\vph1\2puertas\Casa\cmd;*Z:\vph1\2puertas\Casa\Code;Z:\vph1\2puertas\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\2puertas\Comun;*Z:\vph1\2puertas;Z:\vph1\2puertas\Casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\2puertas\Casa\bin -EnvTEXTPATH=Z:\vph1\2puertas\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\2puertas\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\main.cpp.o -Qvtpfar -WmsgSd1106
+
+  0000 a7fe             AIS   #-2
+  266:  	int n,i;
+  267:  	PTT_ON;
+  0002 1500             BCLR  2,_PTC
+  268:  	FX828.ProgramZVEI(400.0);		//Tono de espera comunicación
+  0004 450000           LDHX  @FX828
+  0007 89               PSHX  
+  0008 8b               PSHH  
+  0009 4f               CLRA  
+  000a 87               PSHA  
+  000b 87               PSHA  
+  000c 4543c8           LDHX  #17352
+  000f 89               PSHX  
+  0010 8b               PSHH  
+  0011 cd0000           JSR   ProgramZVEI
+  0014 a706             AIS   #6
+  269:  	FX828.CTCSS_tx_enable (TRUE);
+  0016 450000           LDHX  @FX828
+  0019 89               PSHX  
+  001a 8b               PSHH  
+  001b a601             LDA   #1
+  001d cd0000           JSR   CTCSS_tx_enable
+  0020 a702             AIS   #2
+  270:  	FX828.ZVEI_tx_enable (TRUE);
+  0022 450000           LDHX  @FX828
+  0025 89               PSHX  
+  0026 8b               PSHH  
+  0027 a601             LDA   #1
+  0029 cd0000           JSR   ZVEI_tx_enable
+  002c a702             AIS   #2
+  271:  	FX828.Mod2Enable (TRUE);
+  002e 450000           LDHX  @FX828
+  0031 89               PSHX  
+  0032 8b               PSHH  
+  0033 a601             LDA   #1
+  0035 ae1f             LDX   #31
+  0037 cd0000           JSR   Mod2Enable
+  003a a702             AIS   #2
+  272:  	FX828.Mod1Enable (TRUE);
+  003c 450000           LDHX  @FX828
+  003f 89               PSHX  
+  0040 8b               PSHH  
+  0041 ae1f             LDX   #31
+  0043 a601             LDA   #1
+  0045 cd0000           JSR   Mod1Enable
+  0048 a702             AIS   #2
+  273:  
+  274:  	PTB |= UltimaPuerta;
+  004a c60000           LDA   UltimaPuerta
+  004d ba00             ORA   _PTB
+  004f b700             STA   _PTB
+  0051 cd015d           JSR   L15D ;abs = 015d
+  275:  	
+  276:  	even_timeout=120000;
+  0054 5f               CLRX  
+  0055 cf0000           STX   even_timeout
+  277:  
+  278:  	FX828.EnableCTCSSDecoder (TRUE, PREDICTIVE_MODE);
+  0058 450000           LDHX  @FX828
+  005b 89               PSHX  
+  005c 8b               PSHH  
+  005d 97               TAX   
+  005e cd0000           JSR   EnableCTCSSDecoder
+  0061 a702             AIS   #2
+  279:  	
+  280:  	delay_ms(100);
+  0063 a664             LDA   #100
+  0065 5f               CLRX  
+  0066 cd0000           JSR   delay_ms
+  0069          L69:    
+  0069 cd0154           JSR   L154 ;abs = 0154
+  281:  	do
+  282:  	{
+  283:  		if (FX828.CTCSS_Detected())
+  006c 2722             BEQ   L90 ;abs = 0090
+  284:  		{
+  285:  			// Tiene que haber subtono durante 1 segundo.
+  286:  			for (n=0;n<1000 && FX828.CTCSS_Detected();n++) delay_ms(1); 
+  006e 95               TSX   
+  006f 6f01             CLR   1,X
+  0071 7f               CLR   ,X
+  0072 2007             BRA   L7B ;abs = 007b
+  0074          L74:    
+  0074 cd0174           JSR   L174 ;abs = 0174
+  0077 95               TSX   
+  0078 2601             BNE   L7B ;abs = 007b
+  007a 7c               INC   ,X
+  007b          L7B:    
+  007b cd016c           JSR   L16C ;abs = 016c
+  007e 6503e8           CPHX  #1000
+  0081 9005             BGE   L88 ;abs = 0088
+  0083 cd0154           JSR   L154 ;abs = 0154
+  0086 26ec             BNE   L74 ;abs = 0074
+  0088          L88:    
+  0088 cd016c           JSR   L16C ;abs = 016c
+  287:  			if (n>999)
+  008b 6503e7           CPHX  #999
+  008e 9208             BGT   L98 ;abs = 0098
+  0090          L90:    
+  288:  				break;
+  289:  		}
+  290:  	}while (!COLGADO && even_timeout); //Mientras no cuelgan y no pasan 2 minutos
+  0090 0c0005           BRSET 6,_PTA,L98 ;abs = 0098
+  0093 cd0149           JSR   L149 ;abs = 0149
+  0096 26d1             BNE   L69 ;abs = 0069
+  0098          L98:    
+  0098 cd0149           JSR   L149 ;abs = 0149
+  291:  	
+  292:  	if (even_timeout)
+  009b 2766             BEQ   L103 ;abs = 0103
+  293:  	{	
+  294:  		FX828.ZVEI_tx_enable (FALSE);
+  009d 450000           LDHX  @FX828
+  00a0 89               PSHX  
+  00a1 8b               PSHH  
+  00a2 4f               CLRA  
+  00a3 cd0000           JSR   ZVEI_tx_enable
+  00a6 a702             AIS   #2
+  295:  		FX828.EnableBPF (TRUE);    	//Habilitamos salida de audio rx
+  00a8 450000           LDHX  @FX828
+  00ab 89               PSHX  
+  00ac 8b               PSHH  
+  00ad a601             LDA   #1
+  00af cd0000           JSR   EnableBPF
+  00b2 a702             AIS   #2
+  296:  		//Mientras recibamos subtono, no cuelguen y no salte el time out
+  297:  		while (!COLGADO && even_timeout)
+  00b4 2046             BRA   LFC ;abs = 00fc
+  00b6          LB6:    
+  00b6 cd0154           JSR   L154 ;abs = 0154
+  298:  		{
+  299:  			if (!FX828.CTCSS_Detected())	//Perdemos el subtono de recepción
+  00b9 262f             BNE   LEA ;abs = 00ea
+  300:  			{
+  301:  				for (n=0;n<1000 && !FX828.CTCSS_Detected();n++) delay_ms(1);
+  00bb 95               TSX   
+  00bc 6f01             CLR   1,X
+  00be 7f               CLR   ,X
+  00bf 2007             BRA   LC8 ;abs = 00c8
+  00c1          LC1:    
+  00c1 cd0174           JSR   L174 ;abs = 0174
+  00c4 95               TSX   
+  00c5 2601             BNE   LC8 ;abs = 00c8
+  00c7 7c               INC   ,X
+  00c8          LC8:    
+  00c8 cd016c           JSR   L16C ;abs = 016c
+  00cb 6503e8           CPHX  #1000
+  00ce 9005             BGE   LD5 ;abs = 00d5
+  00d0 cd0154           JSR   L154 ;abs = 0154
+  00d3 27ec             BEQ   LC1 ;abs = 00c1
+  00d5          LD5:    
+  00d5 cd016c           JSR   L16C ;abs = 016c
+  302:  				if (n>=999)
+  00d8 6503e7           CPHX  #999
+  00db 910d             BLT   LEA ;abs = 00ea
+  303:  				{	
+  304:  					even_timeout=0;
+  00dd 4f               CLRA  
+  00de 450000           LDHX  @even_timeout
+  00e1 e703             STA   3,X
+  00e3 e702             STA   2,X
+  00e5 e701             STA   1,X
+  00e7 f7               STA   ,X
+  00e8          LE8:    
+  305:  					break;
+  00e8 2019             BRA   L103 ;abs = 0103
+  00ea          LEA:    
+  306:  				}
+  307:  			}
+  308:  
+  309:  			if (APERTURA_GetVal())	//Si hay subtono de RX,está descolgado y pulsan apertura.
+  00ea b600             LDA   _PTC
+  00ec a430             AND   #48
+  00ee 62               NSA   
+  00ef a40f             AND   #15
+  00f1 2709             BEQ   LFC ;abs = 00fc
+  310:  			{
+  311:  				if (apertura());
+  00f3 cd0000           JSR   apertura
+  00f6 ad65             BSR   L15D ;abs = 015d
+  312:  					even_timeout = 120000;		  //Empezamos la cuenta del time out					
+  00f8 4f               CLRA  
+  00f9 c70000           STA   even_timeout
+  00fc          LFC:    
+  00fc 0c0004           BRSET 6,_PTA,L103 ;abs = 0103
+  00ff ad48             BSR   L149 ;abs = 0149
+  0101 26b3             BNE   LB6 ;abs = 00b6
+  0103          L103:   
+  313:  			}
+  314:  		}
+  315:  	}
+  316:  		
+  317:  	PTB &= 0x80;	//Apagamos los leds
+  0103 b600             LDA   _PTB
+  0105 a480             AND   #-128
+  0107 b700             STA   _PTB
+  318:  	EnableTX (FALSE);
+  0109 4f               CLRA  
+  010a cd0000           JSR   EnableTX
+  319:  	FX828.Mod2Enable (FALSE);
+  010d 450000           LDHX  @FX828
+  0110 89               PSHX  
+  0111 8b               PSHH  
+  0112 4f               CLRA  
+  0113 ae1f             LDX   #31
+  0115 cd0000           JSR   Mod2Enable
+  0118 a702             AIS   #2
+  320:  	FX828.EnableCTCSSDecoder (FALSE, PREDICTIVE_MODE);
+  011a 450000           LDHX  @FX828
+  011d 89               PSHX  
+  011e 8b               PSHH  
+  011f 4f               CLRA  
+  0120 ae01             LDX   #1
+  0122 cd0000           JSR   EnableCTCSSDecoder
+  0125 a702             AIS   #2
+  321:  
+  322:  	FX828.EnableBPF (FALSE);    	//Habilitamos salida de audio rx				
+  0127 450000           LDHX  @FX828
+  012a 89               PSHX  
+  012b 8b               PSHH  
+  012c 4f               CLRA  
+  012d cd0000           JSR   EnableBPF
+  0130 a702             AIS   #2
+  0132 ad15             BSR   L149 ;abs = 0149
+  323:  	if (!even_timeout)
+  0134 2610             BNE   L146 ;abs = 0146
+  324:  	{
+  325:  		UnlinkSignal();	
+  0136 cd0000           JSR   UnlinkSignal
+  326:  		FX828.EnableToneDecoder (TRUE,SELCALL_MODE);
+  0139 450000           LDHX  @FX828
+  013c 89               PSHX  
+  013d 8b               PSHH  
+  013e a601             LDA   #1
+  0140 97               TAX   
+  0141 cd0000           JSR   EnableToneDecoder
+  0144 a702             AIS   #2
+  0146          L146:   
+  327:  	}
+  328:  }
+  0146 a702             AIS   #2
+  0148 81               RTS   
+  0149          L149:   
+  0149 450000           LDHX  @even_timeout
+  014c e603             LDA   3,X
+  014e ea02             ORA   2,X
+  0150 ea01             ORA   1,X
+  0152 fa               ORA   ,X
+  0153 81               RTS   
+  0154          L154:   
+  0154 a600             LDA   @FX828
+  0156 ae00             LDX   @FX828:MSB
+  0158 cd0000           JSR   CTCSS_Detected
+  015b 4d               TSTA  
+  015c 81               RTS   
+  015d          L15D:   
+  015d a6c0             LDA   #-64
+  015f 450001           LDHX  @even_timeout:1
+  0162 e702             STA   2,X
+  0164 a6d4             LDA   #-44
+  0166 e701             STA   1,X
+  0168 a601             LDA   #1
+  016a f7               STA   ,X
+  016b 81               RTS   
+  016c          L16C:   
+  016c 95               TSX   
+  016d e602             LDA   2,X
+  016f 87               PSHA  
+  0170 ee03             LDX   3,X
+  0172 8a               PULH  
+  0173 81               RTS   
+  0174          L174:   
+  0174 a601             LDA   #1
+  0176 5f               CLRX  
+  0177 cd0000           JSR   delay_ms
+  017a 95               TSX   
+  017b 6c03             INC   3,X
+  017d 81               RTS   
+  329:  
+  330:  void maincpp (void)
+  331:  {
+
+Function: maincpp
+Source  : Z:\vph1\2puertas\Casa\Code\main.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\2puertas\Casa;Z:\vph1\2puertas\Casa\bin;Z:\vph1\2puertas\Casa\cmd;*Z:\vph1\2puertas\Casa\Code;Z:\vph1\2puertas\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\2puertas\Comun;*Z:\vph1\2puertas;Z:\vph1\2puertas\Casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\2puertas\Casa\bin -EnvTEXTPATH=Z:\vph1\2puertas\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\2puertas\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\main.cpp.o -Qvtpfar -WmsgSd1106
+
+  0000 a7f9             AIS   #-7
+  332:  	int n;
+  333:  	unsigned int indicativo_puerta1 = *const_indicativo_puerta1;
+  0002 c60001           LDA   const_indicativo_puerta1:1
+  0005 95               TSX   
+  0006 e701             STA   1,X
+  0008 c60000           LDA   const_indicativo_puerta1
+  000b f7               STA   ,X
+  334:  	unsigned int indicativo_puerta2 = *const_indicativo_puerta2;
+  000c c60001           LDA   const_indicativo_puerta2:1
+  000f e703             STA   3,X
+  0011 c60000           LDA   const_indicativo_puerta2
+  0014 e702             STA   2,X
+  335:  	bool bSQL;
+  336:  	
+  337:  	DDRA_DDRA6 = FALSE;
+  0016 1d00             BCLR  6,_DDRA
+  338:  	DDRB = 0xff;		//PORTB TODO SALIDAS
+  0018 6eff00           MOV   #-1,_DDRB
+  339:  	DDRC_DDRC2 = TRUE;
+  001b 1400             BSET  2,_DDRC
+  340:  	DDRD_DDRD4 = FALSE;
+  001d 1900             BCLR  4,_DDRD
+  341:  	PTB = 00;
+  001f 3f00             CLR   _PTB
+  342:  	
+  343:  	SelCallDetected = FALSE;
+  0021 4f               CLRA  
+  0022 c70000           STA   SelCallDetected
+  344:  	CTCSSDetected = FALSE;
+  0025 c70000           STA   CTCSSDetected
+  345:  	BEEP_OFF;
+  0028 1f00             BCLR  7,_PTB
+  346:  	bSQL=FALSE;
+  002a 6f06             CLR   6,X
+  002c          L2C:    
+  347:  
+  348:  	while (Terminal_SendChar ((UCHAR)HIBYTE (indicativo_puerta1))==ERR_TXFULL);
+  002c 95               TSX   
+  002d f6               LDA   ,X
+  002e cd015b           JSR   L15B ;abs = 015b
+  0031 27f9             BEQ   L2C ;abs = 002c
+  0033          L33:    
+  349:  	while (Terminal_SendChar ((UCHAR)LOBYTE (indicativo_puerta1))==ERR_TXFULL);
+  0033 95               TSX   
+  0034 e601             LDA   1,X
+  0036 cd015b           JSR   L15B ;abs = 015b
+  0039 27f8             BEQ   L33 ;abs = 0033
+  003b          L3B:    
+  350:  	while (Terminal_SendChar ('\n')==ERR_TXFULL);
+  003b a60a             LDA   #10
+  003d cd015b           JSR   L15B ;abs = 015b
+  0040 27f9             BEQ   L3B ;abs = 003b
+  0042          L42:    
+  351:  	while (Terminal_SendChar ((UCHAR)HIBYTE (indicativo_puerta2))==ERR_TXFULL);
+  0042 95               TSX   
+  0043 e602             LDA   2,X
+  0045 cd015b           JSR   L15B ;abs = 015b
+  0048 27f8             BEQ   L42 ;abs = 0042
+  004a          L4A:    
+  352:  	while (Terminal_SendChar ((UCHAR)LOBYTE (indicativo_puerta2))==ERR_TXFULL);
+  004a 95               TSX   
+  004b e603             LDA   3,X
+  004d cd015b           JSR   L15B ;abs = 015b
+  0050 27f8             BEQ   L4A ;abs = 004a
+  353:  
+  354:  	EnableInterrupts;
+  0052 9a               CLI   
+  355:  	FX828.Init ();
+  0053 a600             LDA   @FX828
+  0055 ae00             LDX   @FX828:MSB
+  0057 cd0000           JSR   Init
+  356:  
+  357:  	//Grabamos los tonos ZVEEI en la tabla  RX TONE PROGRAM TABLE
+  358:  	for (n=0;n<15;n++)
+  005a 95               TSX   
+  005b 6f05             CLR   5,X
+  005d 6f04             CLR   4,X
+  005f          L5F:    
+  359:  		FX828.PutToneTable (n,RxZVEI1Table[n]);
+  005f 450000           LDHX  @FX828
+  0062 89               PSHX  
+  0063 8b               PSHH  
+  0064 95               TSX   
+  0065 ee07             LDX   7,X
+  0067 89               PSHX  
+  0068 58               LSLX  
+  0069 8c               CLRH  
+  006a d60001           LDA   @RxZVEI1Table:1,X
+  006d de0000           LDX   @RxZVEI1Table,X
+  0070 cd0000           JSR   PutToneTable
+  0073 a703             AIS   #3
+  0075 95               TSX   
+  0076 6c05             INC   5,X
+  0078 2602             BNE   L7C ;abs = 007c
+  007a 6c04             INC   4,X
+  007c          L7C:    
+  007c e604             LDA   4,X
+  007e 87               PSHA  
+  007f ee05             LDX   5,X
+  0081 8a               PULH  
+  0082 65000f           CPHX  #15
+  0085 91d8             BLT   L5F ;abs = 005f
+  360:  		
+  361:  	FX828.SetDecoderBandwidth (0x0f);				//Ponemos el ancho de banda a 2.7
+  0087 450000           LDHX  @FX828
+  008a 89               PSHX  
+  008b 8b               PSHH  
+  008c a60f             LDA   #15
+  008e cd0000           JSR   SetDecoderBandwidth
+  0091 a702             AIS   #2
+  362:  	FX828.ProgramFastCTCSS (100);					//Esperamos subtonos de 100 Hz
+  0093 450000           LDHX  @FX828
+  0096 89               PSHX  
+  0097 8b               PSHH  
+  0098 4f               CLRA  
+  0099 87               PSHA  
+  009a 87               PSHA  
+  009b 4542c8           LDHX  #17096
+  009e 89               PSHX  
+  009f 8b               PSHH  
+  00a0 cd0000           JSR   ProgramFastCTCSS
+  00a3 a706             AIS   #6
+  363:  	FX828.Mod1Enable (FALSE);	//Deshabilitamos mod1		
+  00a5 450000           LDHX  @FX828
+  00a8 89               PSHX  
+  00a9 8b               PSHH  
+  00aa 4f               CLRA  
+  00ab ae1f             LDX   #31
+  00ad cd0000           JSR   Mod1Enable
+  00b0 a702             AIS   #2
+  364:  	FX828.Mod2Enable (TRUE);
+  00b2 450000           LDHX  @FX828
+  00b5 89               PSHX  
+  00b6 8b               PSHH  
+  00b7 a601             LDA   #1
+  00b9 ae1f             LDX   #31
+  00bb cd0000           JSR   Mod2Enable
+  00be a702             AIS   #2
+  365:  	FX828.EnableCTCSSDecoder (FALSE, PREDICTIVE_MODE);
+  00c0 450000           LDHX  @FX828
+  00c3 89               PSHX  
+  00c4 8b               PSHH  
+  00c5 4f               CLRA  
+  00c6 ae01             LDX   #1
+  00c8 cd0000           JSR   EnableCTCSSDecoder
+  00cb a702             AIS   #2
+  366:  	FX828.EnableToneDecoder (TRUE,SELCALL_MODE);
+  00cd 450000           LDHX  @FX828
+  00d0 89               PSHX  
+  00d1 8b               PSHH  
+  00d2 a601             LDA   #1
+  00d4 97               TAX   
+  00d5 cd0000           JSR   EnableToneDecoder
+  00d8 a702             AIS   #2
+  367:  
+  368:  	if (indicativo_puerta1==0xffff || indicativo_puerta2==0xffff )
+  00da 95               TSX   
+  00db f6               LDA   ,X
+  00dc 87               PSHA  
+  00dd ee01             LDX   1,X
+  00df 8a               PULH  
+  00e0 65ffff           CPHX  #-1
+  00e3 270c             BEQ   LF1 ;abs = 00f1
+  00e5 95               TSX   
+  00e6 e602             LDA   2,X
+  00e8 87               PSHA  
+  00e9 ee03             LDX   3,X
+  00eb 8a               PULH  
+  00ec 65ffff           CPHX  #-1
+  00ef 2668             BNE   L159 ;abs = 0159
+  00f1          LF1:    
+  369:  		ErrorIndicativo();
+  00f1 cd0000           JSR   ErrorIndicativo
+  00f4          LF4:    
+  00f4 2063             BRA   L159 ;abs = 0159
+  00f6          LF6:    
+  370:  
+  371:  	for(;;)
+  372:  	{
+  373:  		if (!COLGADO) 	//El usuario descuelga sin que llamen.
+  00f6 0c000c           BRSET 6,_PTA,L105 ;abs = 0105
+  374:  		{
+  375:  			delay_ms (100);
+  00f9 a664             LDA   #100
+  00fb 5f               CLRX  
+  00fc cd0000           JSR   delay_ms
+  376:  			if (!COLGADO)
+  00ff 0c0003           BRSET 6,_PTA,L105 ;abs = 0105
+  377:  			{
+  378:  				comunicando();				//Realiza la comunicación
+  0102 cd0000           JSR   comunicando
+  0105          L105:   
+  379:  			}
+  380:  		}
+  381:  		
+  382:  		//Pulsan apertura sin haber descolgado y sin que hayan llamado.
+  383:  		//Pero no se recibe ningún subtono
+  384:  		if (APERTURA_GetVal() && !FX828.CTCSS_Detected())
+  0105 b600             LDA   _PTC
+  0107 a430             AND   #48
+  0109 62               NSA   
+  010a a40f             AND   #15
+  010c 2711             BEQ   L11F ;abs = 011f
+  010e a600             LDA   @FX828
+  0110 ae00             LDX   @FX828:MSB
+  0112 cd0000           JSR   CTCSS_Detected
+  0115 4d               TSTA  
+  0116 2607             BNE   L11F ;abs = 011f
+  385:  		{
+  386:  			if (apertura());
+  0118 cd0000           JSR   apertura
+  387:  				EnableTX (FALSE);
+  011b 4f               CLRA  
+  011c cd0000           JSR   EnableTX
+  011f          L11F:   
+  388:  				
+  389:  		}
+  390:  		
+  391:  		if (SelCallDetected)
+  011f c60000           LDA   SelCallDetected
+  0122 2735             BEQ   L159 ;abs = 0159
+  392:  		{				 
+  393:  			PTB &= 0x80;	//Apagamos los leds
+  0124 b600             LDA   _PTB
+  0126 a480             AND   #-128
+  0128 b700             STA   _PTB
+  394:  			if (IndicRx.valor == indicativo_puerta1)
+  012a 95               TSX   
+  012b e601             LDA   1,X
+  012d 87               PSHA  
+  012e f6               LDA   ,X
+  012f 87               PSHA  
+  0130 c60001           LDA   IndicRx:1
+  0133 ce0000           LDX   IndicRx
+  0136 cd0000           JSR   _ICMP
+  0139 2604             BNE   L13F ;abs = 013f
+  395:  			{
+  396:  				LED_PUERTA1 = TRUE; //Led puerta 1 encendido
+  013b 1c00             BSET  6,_PTB
+  013d ad22             BSR   L161 ;abs = 0161
+  013f          L13F:   
+  397:  				UltimaPuerta= PTB;
+  398:  				GeneraTimbre();
+  399:  			}
+  400:  
+  401:  			if (IndicRx.valor == indicativo_puerta2)
+  013f 95               TSX   
+  0140 e603             LDA   3,X
+  0142 87               PSHA  
+  0143 e602             LDA   2,X
+  0145 87               PSHA  
+  0146 c60001           LDA   IndicRx:1
+  0149 ce0000           LDX   IndicRx
+  014c cd0000           JSR   _ICMP
+  014f 2604             BNE   L155 ;abs = 0155
+  402:  			{
+  403:  				LED_PUERTA2 = TRUE; //Led puerta 2 encendido
+  0151 1a00             BSET  5,_PTB
+  0153 ad0c             BSR   L161 ;abs = 0161
+  0155          L155:   
+  404:  				UltimaPuerta= PTB;
+  405:  				GeneraTimbre();
+  406:  			}
+  407:  			SelCallDetected=FALSE;
+  0155 4f               CLRA  
+  0156 c70000           STA   SelCallDetected
+  0159          L159:   
+  408:  		}
+  409:  	}
+  0159 209b             BRA   LF6 ;abs = 00f6
+  015b          L15B:   
+  015b cd0000           JSR   Terminal_SendChar
+  015e a10b             CMP   #11
+  0160 81               RTS   
+  0161          L161:   
+  0161 b600             LDA   _PTB
+  0163 c70000           STA   UltimaPuerta
+  0166 cc0000           JMP   GeneraTimbre
+  410:  }
+  411:  
+  412:  #ifdef __cplusplu
+  413:  	extern "C"
+  414:  #endif
+  415:  void MainIRQ ()
+  416:  {
+
+Function: MainIRQ
+Source  : Z:\vph1\2puertas\Casa\Code\main.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\2puertas\Casa;Z:\vph1\2puertas\Casa\bin;Z:\vph1\2puertas\Casa\cmd;*Z:\vph1\2puertas\Casa\Code;Z:\vph1\2puertas\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\2puertas\Comun;*Z:\vph1\2puertas;Z:\vph1\2puertas\Casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\2puertas\Casa\bin -EnvTEXTPATH=Z:\vph1\2puertas\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\2puertas\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\main.cpp.o -Qvtpfar -WmsgSd1106
+
+  0000 8b               PSHH  
+  417:  	static byte buffer[4];
+  418:  	static bool bStart;
+  419:  	static byte idx;
+  420:  	byte tono;
+  421:  	
+  422:  	FX828.IRQService();
+  0001 a600             LDA   @FX828
+  0003 ae00             LDX   @FX828:MSB
+  0005 cd0000           JSR   IRQService
+  423:  
+  424:  	tono = FX828.GetTone();
+  0008 a600             LDA   @FX828
+  000a ae00             LDX   @FX828:MSB
+  000c cd0000           JSR   GetTone
+  000f 95               TSX   
+  0010 f7               STA   ,X
+  425:  	if (tono!=0xff && tono!=UNKNOWN_TONE)	//Hemos detectado un tono conocido
+  0011 41ff69           CBEQA #-1,L7D ;abs = 007d
+  0014 410f66           CBEQA #15,L7D ;abs = 007d
+  426:  	{		
+  427:  		if (bStart==TRUE)
+  0017 c60000           LDA   bStart
+  001a 4b53             DBNZA L6F ;abs = 006f
+  428:  		{
+  429:  			buffer[idx++]=tono;	
+  001c c60000           LDA   idx
+  001f 97               TAX   
+  0020 4c               INCA  
+  0021 c70000           STA   idx
+  0024 8c               CLRH  
+  0025 9ee601           LDA   1,SP
+  0028 d70000           STA   @buffer,X
+  430:  			if (idx==4)
+  002b c60000           LDA   idx
+  002e a104             CMP   #4
+  0030 263d             BNE   L6F ;abs = 006f
+  431:  			{
+  432:  				IndicRx._byte.low  = MAKEBYTE (buffer[0],buffer[1]);
+  0032 450000           LDHX  @buffer
+  0035 f6               LDA   ,X
+  0036 62               NSA   
+  0037 a4f0             AND   #-16
+  0039 ea01             ORA   1,X
+  003b c80000           EOR   IndicRx
+  003e c80000           EOR   IndicRx
+  0041 c70000           STA   IndicRx
+  433:  				IndicRx._byte.high = MAKEBYTE (buffer[2],buffer[3]);
+  0044 e602             LDA   2,X
+  0046 62               NSA   
+  0047 a4f0             AND   #-16
+  0049 ea03             ORA   3,X
+  004b 450001           LDHX  @IndicRx:1
+  004e f8               EOR   ,X
+  004f f8               EOR   ,X
+  0050 f7               STA   ,X
+  434:  				SelCallDetected = TRUE;	
+  0051 a601             LDA   #1
+  0053 c70000           STA   SelCallDetected
+  435:  				idx =0;
+  0056 4f               CLRA  
+  0057 c70000           STA   idx
+  436:  				bStart=FALSE;
+  005a c70000           STA   bStart
+  005d          L5D:    
+  437:  
+  438:  				while (Terminal_SendChar ((UCHAR)IndicRx._byte.high)==ERR_TXFULL);
+  005d c60001           LDA   IndicRx:1
+  0060 cd0000           JSR   Terminal_SendChar
+  0063 410bf7           CBEQA #11,L5D ;abs = 005d
+  0066          L66:    
+  439:  				while (Terminal_SendChar ((UCHAR)IndicRx._byte.low)==ERR_TXFULL);				
+  0066 c60000           LDA   IndicRx
+  0069 cd0000           JSR   Terminal_SendChar
+  006c 410bf7           CBEQA #11,L66 ;abs = 0066
+  006f          L6F:    
+  440:  			}		
+  441:  		}
+  442:  
+  443:  		if (tono==0xb)	//Inicio de trama
+  006f 95               TSX   
+  0070 f6               LDA   ,X
+  0071 a10b             CMP   #11
+  0073 2608             BNE   L7D ;abs = 007d
+  444:  		{
+  445:  			idx=0;
+  0075 4f               CLRA  
+  0076 c70000           STA   idx
+  446:  			bStart=TRUE;
+  0079 4c               INCA  
+  007a c70000           STA   bStart
+  007d          L7D:    
+  447:  		}		
+  448:  	}
+  449:  	
+  450:  }
+  007d 8a               PULH  
+  007e 81               RTS   
+
+Function: __ConstructorInit__
+Source  : Z:\vph1\2puertas\Casa\Code\main.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\2puertas\Casa;Z:\vph1\2puertas\Casa\bin;Z:\vph1\2puertas\Casa\cmd;*Z:\vph1\2puertas\Casa\Code;Z:\vph1\2puertas\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\2puertas\Comun;*Z:\vph1\2puertas;Z:\vph1\2puertas\Casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\2puertas\Casa\bin -EnvTEXTPATH=Z:\vph1\2puertas\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\2puertas\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\main.cpp.o -Qvtpfar -WmsgSd1106
+
+
+No source information available for functions created by the compiler internally
+  0000 a600             LDA   @FX828
+  0002 ae00             LDX   @FX828:MSB
+  0004 cc0000           JMP   CONSTRUCTOR
+
+Function: __DestructorInit__
+Source  : Z:\vph1\2puertas\Casa\Code\main.cpp
+Options : -Cc -Env"GENPATH=Z:\vph1\2puertas\Casa;Z:\vph1\2puertas\Casa\bin;Z:\vph1\2puertas\Casa\cmd;*Z:\vph1\2puertas\Casa\Code;Z:\vph1\2puertas\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\2puertas\Comun;*Z:\vph1\2puertas;Z:\vph1\2puertas\Casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\2puertas\Casa\bin -EnvTEXTPATH=Z:\vph1\2puertas\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\2puertas\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\main.cpp.o -Qvtpfar -WmsgSd1106
+
+
+No source information available for functions created by the compiler internally
+  0000 a600             LDA   @FX828
+  0002 ae00             LDX   @FX828:MSB
+  0004 cc0000           JMP   DESTRUCTOR
+  451:  
+  452:  /* END vph1 */
+  453:  /*
+  454:  ** ###################################################################
+  455:  **
+  456:  **     This file was created by UNIS Processor Expert 02.89 for 
+  457:  **     the Motorola HC08 series of microcontrollers.
+  458:  **
+  459:  ** ###################################################################
+  460:  */
+  461:  

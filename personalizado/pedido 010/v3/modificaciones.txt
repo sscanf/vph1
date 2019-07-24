@@ -1,0 +1,10 @@
+MODIFICACIONES PARA MATINSA PEDIDO 010
+--------------------------------------
+Partimos de la revisión 3.
+
+05/02/2006
+
+CAMBIOS EN EL LADO CASA
+------------------------
+
+- Ahora se puede seleccionar el indicativo externamente mediante los pines: 18,19,20

@@ -1,0 +1,422 @@
+ANSI-C/cC++ Compiler for HC08 V-5.0.17, Apr 22 2003
+
+    1:  /******************************************************************************
+    2:    FILE        : start08.c 
+    3:    PURPOSE     : 68HC08 standard startup code
+    4:    LANGUAGE    : ANSI-C / INLINE ASSEMBLER
+    5:    ----------------------------------------------------------------------------
+    6:    HISTORY 
+    7:      22 oct 93         Created.
+    8:      04/17/97          Also C++ constructors called in Init().
+    9:   ******************************************************************************/
+   10:  
+   11:  #include <start08.h>
+   12:  
+   13:  /**********************************************************************/
+   14:  #pragma DATA_SEG FAR _STARTUP
+   15:  struct _tagStartup _startupData;    /* read-only:
+   16:                                       _startupData is allocated in ROM and
+   17:                                       initialized by the linker */
+   18:  
+   19:  
+   20:  #define USE_C_IMPL 0 /* for now, we are using the inline assembler implementation for the startup code */
+   21:  
+   22:  #if !USE_C_IMPL
+   23:  #pragma MESSAGE DISABLE C20001 /* Warning C20001: Different value of stackpointer depending on control-flow */
+   24:  /* the function _COPY_L releases some bytes from the stack internally */
+   25:  
+   26:  #ifdef __OPTIMIZE_FOR_SIZE__
+   27:  #pragma NO_ENTRY
+   28:  #pragma NO_EXIT
+   29:  #pragma NO_FRAME
+   30:  /*lint -esym(528, loadByte) inhibit warning about not referenced loadByte function */
+   31:  static void near loadByte(void) {
+
+Function: loadByte
+Source  : D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src\Start08.c
+Options : -Cc -Env"GENPATH=Z:\vph1\maestro\v6\casa;Z:\vph1\maestro\v6\casa\bin;Z:\vph1\maestro\v6\casa\cmd;*Z:\vph1\maestro\v6\casa\Code;Z:\vph1\maestro\v6\casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\maestro\v6\Comun;*Z:\vph1\maestro\v6;Z:\vph1\maestro\v6\casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\maestro\v6\casa\bin -EnvTEXTPATH=Z:\vph1\maestro\v6\casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\maestro\v6\casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\Start08.c.o -Qvtpfar -WmsgSd20001
+
+   32:    asm {
+   33:               PSHH
+  0000 8b               PSHH  
+   34:               PSHX
+  0001 89               PSHX  
+  0002 95               TSX   
+   35:  #ifdef __HCS08__
+   36:               LDHX    5,SP
+   37:               LDA     0,X
+   38:               AIX     #1
+   39:               STHX    5,SP
+   40:  #else
+   41:               LDA     5,SP
+  0003 e604             LDA   4,X
+   42:               PSHA
+  0005 87               PSHA  
+   43:               LDX     7,SP
+  0006 ee05             LDX   5,X
+   44:               PULH
+  0008 8a               PULH  
+   45:               LDA     0,X
+  0009 f6               LDA   ,X
+   46:               AIX     #1
+  000a af01             AIX   #1
+   47:               STX     6,SP
+  000c 9eef06           STX   6,SP
+   48:               PSHH
+  000f 8b               PSHH  
+   49:               PULX
+  0010 88               PULX  
+   50:               STX     5,SP
+  0011 9eef05           STX   5,SP
+   51:  #endif
+   52:               PULX
+  0014 88               PULX  
+   53:               PULH
+  0015 8a               PULH  
+   54:               RTS
+  0016 81               RTS   
+   55:    }
+   56:  }
+   57:  #endif /* __OPTIMIZE_FOR_SIZE__ */
+   58:  
+   59:  #endif
+   60:  
+   61:  /*lint -esym(752,_COPY_L)  inhibit message on dunction declared, but not used (it is used in HLI) */
+   62:  extern void _COPY_L(void);
+   63:  /* DESC:    copy very large structures (>= 256 bytes) in 16 bit address space (stack incl.)
+   64:     IN:      TOS count, TOS(2) @dest, H:X @src
+   65:     OUT:
+   66:     WRITTEN: X,H */
+   67:  #ifdef __ELF_OBJECT_FILE_FORMAT__
+   68:  	#define toCopyDownBegOffs 0
+   69:  #else
+   70:  	#define toCopyDownBegOffs 2 /* for the hiware format, the toCopyDownBeg field is a long. Because the HC08 is big endian, we have to use an offset of 2 */ 
+   71:  #endif
+   72:  static void Init(void) {
+
+Function: Init
+Source  : D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src\Start08.c
+Options : -Cc -Env"GENPATH=Z:\vph1\maestro\v6\casa;Z:\vph1\maestro\v6\casa\bin;Z:\vph1\maestro\v6\casa\cmd;*Z:\vph1\maestro\v6\casa\Code;Z:\vph1\maestro\v6\casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\maestro\v6\Comun;*Z:\vph1\maestro\v6;Z:\vph1\maestro\v6\casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\maestro\v6\casa\bin -EnvTEXTPATH=Z:\vph1\maestro\v6\casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\maestro\v6\casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\Start08.c.o -Qvtpfar -WmsgSd20001
+
+  0000 a7fc             AIS   #-4
+   73:  /* purpose:     1) zero out RAM-areas where data is allocated
+   74:                  2) init run-time data
+   75:                  3) copy initialization data from ROM to RAM
+   76:   */
+   77:    /*lint -esym(529,p,i)  inhibit warning about symbols not used: it is used in HLI below */
+   78:    int i;
+   79:    int *far p;
+   80:    /*lint +e529 */
+   81:  #if USE_C_IMPL   /* C implementation of ZERO OUT and COPY Down */
+   82:    int j;
+   83:    char *dst;
+   84:    _Range *far r;
+   85:  
+   86:    r = _startupData.pZeroOut;
+   87:    
+   88:    /* zero out */
+   89:    for (i=0; i != _startupData.nofZeroOuts; i++) {
+   90:      dst = r->beg;
+   91:      j = r->size;
+   92:      do {
+   93:        *dst = 0; /* zero out */
+   94:        dst++;
+   95:        j--;
+   96:      } while(j != 0);
+   97:      r++;
+   98:    }
+   99:  #else /* faster and smaller asm implementation for ZERO OUT */
+  100:    asm {
+  101:  ZeroOut:     ;
+  102:               LDA    _startupData.nofZeroOuts:1 ; nofZeroOuts
+  0002 c60004           LDA   _startupData:4
+  103:               INCA
+  0005 4c               INCA  
+  0006 95               TSX   
+  104:               STA    i:1                        ; i is counter for number of zero outs
+  0007 e701             STA   1,X
+  105:               LDA    _startupData.nofZeroOuts:0 ; nofZeroOuts
+  0009 c60003           LDA   _startupData:3
+  106:               INCA
+  000c 4c               INCA  
+  107:               STA    i:0
+  000d f7               STA   ,X
+  108:               LDHX   _startupData.pZeroOut      ; *pZeroOut
+  000e ce0005           LDX   _startupData:5
+  0011 89               PSHX  
+  0012 8a               PULH  
+  0013 ce0006           LDX   _startupData:6
+  109:               BRA    Zero_5
+  0016 201f             BRA   L37 ;abs = 0037
+  0018          L18:    
+  110:  Zero_3:    ;
+  111:              ; CLR    i:1 is already 0
+  112:  Zero_4:    ;
+  113:               ; { HX == _pZeroOut }
+  114:               PSHX
+  0018 89               PSHX  
+  115:               PSHH
+  0019 8b               PSHH  
+  116:               ; { nof bytes in (int)2,X }
+  117:               ; { address in (int)0,X   }
+  118:               LDA    0,X
+  001a f6               LDA   ,X
+  119:               PSHA
+  001b 87               PSHA  
+  120:               LDA    2,X
+  001c e602             LDA   2,X
+  121:               INCA
+  001e 4c               INCA  
+  122:               STA    p                  ; p:0 is used for high byte of byte counter
+  001f 9ee706           STA   6,SP
+  123:               LDA    3,X
+  0022 e603             LDA   3,X
+  124:               LDX    1,X
+  0024 ee01             LDX   1,X
+  125:               PULH
+  0026 8a               PULH  
+  126:               INCA
+  0027 4c               INCA  
+  127:               BRA    Zero_0
+  0028 2003             BRA   L2D ;abs = 002d
+  002a          L2A:    
+  128:  Zero_1:    ;
+  129:             ;  CLRA   A is already 0, so we do not have to clear it
+  130:  Zero_2:    ;
+  131:               CLR    0,X
+  002a 7f               CLR   ,X
+  132:               AIX    #1
+  002b af01             AIX   #1
+  002d          L2D:    
+  133:  Zero_0:    ;
+  134:               DBNZA  Zero_2
+  002d 4bfb             DBNZA L2A ;abs = 002a
+  135:  Zero_6:
+  136:               DBNZ   p, Zero_1
+  002f 9e6b05f7         DBNZ  5,SP,L2A ;abs = 002a
+  137:               PULH
+  0033 8a               PULH  
+  138:               PULX                           ; restore *pZeroOut
+  0034 88               PULX  
+  139:               AIX    #4                      ; advance *pZeroOut
+  0035 af04             AIX   #4
+  0037          L37:    
+  140:  Zero_5:    ;
+  141:               DBNZ   i:1, Zero_4
+  0037 9e6b02dd         DBNZ  2,SP,L18 ;abs = 0018
+  142:               DBNZ   i:0, Zero_3
+  003b 9e6b01d9         DBNZ  1,SP,L18 ;abs = 0018
+  143:               ;
+  144:  CopyDown:    ;
+  145:  
+  146:    }
+  147:  
+  148:  #endif
+  149:  
+  150:    /* copy down */
+  151:    /* _startupData.toCopyDownBeg  --->  {nof(16) dstAddr(16) {bytes(8)}^nof} Zero(16) */
+  152:  #if USE_C_IMPL /* (optimized) C implementation of COPY DOWN */
+  153:    p = (int*far)_startupData.toCopyDownBeg;
+  154:    for (;;) {
+  155:      i = *p; /* nof */
+  156:      if (i == 0) {
+  157:        break;
+  158:      }
+  159:      dst = (char*far)p[1]; /* dstAddr */
+  160:      p+=2;
+  161:      do {
+  162:        /* p points now into 'bytes' */
+  163:        *dst = *((char*far)p); /* copy byte-wise */
+  164:        ((char*far)p)++;
+  165:        dst++;
+  166:        i--;
+  167:      } while (i!= 0);
+  168:    }  
+  169:  #elif defined(__OPTIMIZE_FOR_SIZE__)
+  170:    asm {
+  171:  #ifdef __HCS08__
+  172:               LDHX   _startupData.toCopyDownBeg:toCopyDownBegOffs
+  173:               PSHX  
+  174:               PSHH  
+  175:  #else
+  176:               LDA    _startupData.toCopyDownBeg:(1+toCopyDownBegOffs)
+  003f c60008           LDA   _startupData:8
+  177:               PSHA  
+  0042 87               PSHA  
+  178:               LDA    _startupData.toCopyDownBeg:(0+toCopyDownBegOffs)
+  0043 c60007           LDA   _startupData:7
+  179:               PSHA  
+  0046 87               PSHA  
+  0047          L47:    
+  180:  #endif
+  181:  Loop0:             
+  182:               JSR    loadByte  ; load high byte counter
+  0047 ad00             BSR   loadByte
+  183:               TAX              ; save for compare
+  0049 97               TAX   
+  184:               INCA  
+  004a 4c               INCA  
+  185:               STA    i
+  004b 9ee703           STA   3,SP
+  186:               JSR    loadByte  ; load low byte counter
+  004e ad00             BSR   loadByte
+  187:               INCA  
+  0050 4c               INCA  
+  188:               STA    i:1
+  0051 9ee704           STA   4,SP
+  189:               DECA
+  0054 4a               DECA  
+  190:               BNE    notfinished
+  0055 2603             BNE   L5A ;abs = 005a
+  191:               CBEQX  #0, finished
+  0057 510018           CBEQX #0,L72 ;abs = 0072
+  005a          L5A:    
+  192:  notfinished:
+  193:  
+  194:               JSR    loadByte  ; load high byte ptr
+  005a ad00             BSR   loadByte
+  195:               PSHA  
+  005c 87               PSHA  
+  196:               PULH  
+  005d 8a               PULH  
+  197:               JSR    loadByte  ; load low byte ptr
+  005e ad00             BSR   loadByte
+  198:               TAX              ; HX is now destination pointer
+  0060 97               TAX   
+  199:               BRA    Loop1
+  0061 2005             BRA   L68 ;abs = 0068
+  0063          L63:    
+  200:  Loop3:             
+  201:  Loop2:             
+  202:               JSR    loadByte  ; load data byte
+  0063 ad00             BSR   loadByte
+  203:               STA    0,X
+  0065 f7               STA   ,X
+  204:               AIX    #1
+  0066 af01             AIX   #1
+  0068          L68:    
+  205:  Loop1:
+  206:               DBNZ   i:1, Loop2
+  0068 9e6b04f7         DBNZ  4,SP,L63 ;abs = 0063
+  207:               DBNZ   i:0, Loop3
+  006c 9e6b03f3         DBNZ  3,SP,L63 ;abs = 0063
+  208:               BRA    Loop0
+  0070 20d5             BRA   L47 ;abs = 0047
+  0072          L72:    
+  209:  
+  210:  finished:
+  211:               AIS #2
+  212:      };
+  213:  #else /* optimized asm version. Some bytes (ca 3) larger than C version (when considering the runtime routine too), but about 4 times faster */
+  214:    asm {
+  215:  #ifdef __HCS08__
+  216:               LDHX   _startupData.toCopyDownBeg:toCopyDownBegOffs
+  217:  #else
+  218:               LDX    _startupData.toCopyDownBeg:(0+toCopyDownBegOffs)
+  219:               PSHX
+  220:               PULH
+  221:               LDX    _startupData.toCopyDownBeg:(1+toCopyDownBegOffs)
+  222:  #endif
+  223:  next:
+  224:               LDA   0,X    ; list is terminated by 2 zero bytes
+  225:               ORA   1,X
+  226:               BEQ copydone
+  227:               PSHX         ; store current position
+  228:               PSHH
+  229:               LDA   3,X    ; psh dest low
+  230:               PSHA
+  231:               LDA   2,X    ; psh dest high
+  232:               PSHA
+  233:               LDA   1,X    ; psh cnt low
+  234:               PSHA
+  235:               LDA   0,X    ; psh cnt high
+  236:               PSHA
+  237:               AIX   #4
+  238:               JSR  _COPY_L ; copy one block
+  239:               PULH
+  240:               PULX       
+  241:               TXA
+  242:               ADD   1,X    ; add low 
+  243:               PSHA 
+  244:               PSHH
+  245:               PULA
+  246:               ADC   0,X    ; add high
+  247:               PSHA
+  248:               PULH
+  249:               PULX
+  250:               AIX   #4
+  251:               BRA next
+  252:  copydone:
+  253:    };
+  254:  #endif
+  255:  
+  256:    
+  257:    /* FuncInits: for C++, this are the global constructors */
+  258:  #ifdef __cplusplus
+  259:  #ifdef __ELF_OBJECT_FILE_FORMAT__
+  260:    i = (int)(_startupData.nofInitBodies - 1);
+  261:    while ( i >= 0) {
+  262:      (&_startupData.initBodies->initFunc)[i]();  /* call C++ constructors */
+  263:      i--;
+  264:    }
+  265:  #else
+  266:    if (_startupData.mInits != NULL) {
+  267:      _PFunc *fktPtr;
+  268:      fktPtr = _startupData.mInits;
+  269:      while(*fktPtr != NULL) {
+  270:        (**fktPtr)(); /* call constructor */
+  271:        fktPtr++;
+  272:      }
+  273:    }
+  274:  #endif     
+  275:  #endif  
+  276:    /* LibInits: used only for ROM libraries */
+  277:  }
+  0072 a706             AIS   #6
+  0074 81               RTS   
+  278:  
+  279:  #pragma NO_EXIT
+  280:  #ifdef __cplusplus
+  281:    extern "C"
+  282:  #endif
+  283:  void _Startup (void) { /* To set in the linker parameter file: 'VECTOR 0 _Startup' */
+
+Function: _Startup
+Source  : D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src\Start08.c
+Options : -Cc -Env"GENPATH=Z:\vph1\maestro\v6\casa;Z:\vph1\maestro\v6\casa\bin;Z:\vph1\maestro\v6\casa\cmd;*Z:\vph1\maestro\v6\casa\Code;Z:\vph1\maestro\v6\casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\maestro\v6\Comun;*Z:\vph1\maestro\v6;Z:\vph1\maestro\v6\casa\doc;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\hc08c\include;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\Bin\Plugins\support\ProcessorExpert\PESL\HC08;D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior CW08_V3.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\maestro\v6\casa\bin -EnvTEXTPATH=Z:\vph1\maestro\v6\casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\maestro\v6\casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\Start08.c.o -Qvtpfar -WmsgSd20001
+
+  284:  /*  purpose:    1)  initialize the stack
+  285:                  2)  initialize run-time, ...
+  286:                      initialize the RAM, copy down init dat etc (Init)
+  287:                  3)  call main;
+  288:      called from: _PRESTART-code generated by the Linker
+  289:  */
+  290:  #ifdef __ELF_OBJECT_FILE_FORMAT__
+  291:    DisableInterrupts;  /* in HIWARE format, this is done in the prestart code */
+  0000 9b               SEI   
+  0001          L1:     
+  292:  #endif
+  293:    for (;;) { /* forever: initialize the program; call the root-procedure */
+  294:      if (!(_startupData.flags&STARTUP_FLAGS_NOT_INIT_SP)) {
+  0001 c60000           LDA   _startupData
+  0004 a502             BIT   #2
+  0006 2604             BNE   LC ;abs = 000c
+  295:        /* initialize the stack pointer */
+  296:        INIT_SP_FROM_STARTUP_DESC();
+  0008 450000           LDHX  @__SEG_END_SSTACK
+  000b 94               TXS   
+  000c          LC:     
+  297:      }
+  298:      Init();
+  000c cd0000           JSR   Init
+  299:      (*_startupData.main)();
+  000f ce0001           LDX   _startupData:1
+  0012 89               PSHX  
+  0013 8a               PULH  
+  0014 ce0002           LDX   _startupData:2
+  0017 fd               JSR   ,X
+  0018 20e7             BRA   L1 ;abs = 0001
+  300:    } /* end loop forever */
+  301:  }
+  302:  
+  303:  

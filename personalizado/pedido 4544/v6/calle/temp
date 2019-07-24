@@ -1,0 +1,70 @@
+		tecla = teclado();
+		if (tecla>-1)	//Pulsan una tecla del teclado
+		{
+
+			FX828.EnableToneDecoder (FALSE,SELCALL_MODE);	//Deshabilitamos el decodificador de tonos
+			FX828.EnableCTCSSDecoder (FALSE, PREDICTIVE_MODE);//Deshabilitamos el decodificador de subtonos
+			
+			PTT_ON;
+			//Componemos el código ZVEI
+			sprintf (str,"%04d",tecla);
+						
+			//Transmitimos:
+			//
+			// --- --- --- --- ---
+			//| B | C | C | C | C |
+			// --- --- --- --- ---
+			//
+			// B = Inicio de trama (B)
+			// C = Indicativo (3 dígitos)
+			
+			delay_ms(500);
+			FX828.CTCSS_tx_enable (FALSE);
+			DisableInterrupts;
+			FX828.TxZVEI (0x0b);
+			FX828.TxZVEI (0x0b);
+			FX828.TxZVEI (str);
+			EnableInterrupts;
+			delay_ms(500);
+			desconexion();
+			while (teclado()>-1);
+			FX828.EnableToneDecoder (TRUE,SELCALL_MODE);	//Habilitamos el decodificador de tonos
+			FX828.EnableCTCSSDecoder (TRUE, PREDICTIVE_MODE);			
+		}
+
+		if (bCTCSSDetected)	//Nos llaman
+		{
+			for (n=0;n<3000 && bCTCSSDetected;n++);delay_ms(1);
+			if (n>=2999)
+			{				
+				PTT_ON;
+				AUDIO_ENABLE;
+				FX828.CTCSS_tx_enable (TRUE);//Transmitimos subtono
+				FX828.EnableBPF (TRUE);		 //Habilitamos salida de audio rx
+				
+				while (bCTCSSDetected)		 //Mientras haya subtono
+				{
+					if (!bCTCSSDetected)	//Perdemos el subtono de recepción
+					{
+						for (n=0;n<2000 && !bCTCSSDetected;n++) delay_ms(1);
+						if (n>=1999)
+							break;
+					}
+				}
+			}
+			
+			desconexion();
+		}
+		
+		if (bAperDetected)	//Detectamos subtono de apertura puerta
+		{
+			//Tiene que haber 3 segundos de subtono para ser validado.
+			for (n=0;n<3000 && bAperDetected;n++);delay_ms(1);
+			if (n>=2999)
+			{
+				APERTURA_PUERTA=TRUE;
+				while (bAperDetected);
+				APERTURA_PUERTA=FALSE;
+			}			
+		}
+	}

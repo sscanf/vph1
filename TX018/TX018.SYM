@@ -1,0 +1,117 @@
+005     PORT_A
+006     PORT_B
+00E     TIMER_1_LOW
+00F     TIMER_1_HIGH
+011     TIMER_2
+015-016 CCP_1
+015     CCP_1_LOW
+016     CCP_1_HIGH
+01B-01C CCP_2
+01B     CCP_2_LOW
+01C     CCP_2_HIGH
+020     @SCRATCH
+021     @SCRATCH
+021     _RETURN_
+022     @SCRATCH
+023     @SCRATCH
+024     @SCRATCH
+025     STRTOK.SAVE
+026     TRIS_C
+027     MAIN.H
+028     MAIN.L
+029-02A MAIN.N
+02B-02C MAIN.A
+02D-02E MAIN.R
+02F-030 PLLPROGRAM.N
+031-032 PLLPROGRAM.R
+033     PLLPROGRAM.A
+034     PLLPROGRAM.@SCRATCH
+035     WRITE.BT
+035     PLLPROGRAM.@SCRATCH
+036     WRITE.N
+        ATOF.S
+  -002  ATOF.POW10
+  -002  ATOF.RESULT
+        ATOF.SIGN
+        ATOF.POINT
+        ATOF.C
+        ATOF.PTR
+        ABS.I
+        ABS.R
+  -000  LABS.L
+  -000  LABS.R
+        ATOI.S
+        ATOI.RESULT
+        ATOI.SIGN
+        ATOI.BASE
+        ATOI.PTR
+        ATOI.C
+        ATOL.S
+  -000  ATOL.RESULT
+  -000  ATOL.UR
+        ATOL.SIGN
+        ATOL.BASE
+        ATOL.PTR
+        ATOL.C
+        STRCAT.S1
+        STRCAT.S2
+        STRCAT.S
+        STRCHR.S
+        STRCHR.C
+        STRRCHR.S
+        STRRCHR.C
+        STRRCHR.P
+        STRCMP.S1
+        STRCMP.S2
+        STRNCMP.S1
+        STRNCMP.S2
+        STRNCMP.N
+        STRICMP.S1
+        STRICMP.S2
+        STRCOPY.S1
+        STRCOPY.S2
+        STRCOPY.S
+        STRNCPY.S1
+        STRNCPY.S2
+        STRNCPY.N
+        STRNCPY.S
+        STRCSPN.S1
+        STRCSPN.S2
+        STRCSPN.SC1
+        STRCSPN.SC2
+        STRSPN.S1
+        STRSPN.S2
+        STRSPN.SC1
+        STRSPN.SC2
+        STRLEN.S
+        STRLEN.SC
+        STRLWR.S
+        STRLWR.P
+        STRPBRK.S1
+        STRPBRK.S2
+        STRPBRK.SC1
+        STRPBRK.SC2
+        STRSTR.S1
+        STRSTR.S2
+        STRSTR.SC1
+        STRSTR.SC2
+        STRTOK.S1
+        STRTOK.S2
+        STRTOK.BEG
+        STRTOK.END
+        DELAY_MS.P1
+        DELAY_US.P2
+        FREC.FR
+        FRECQUERY.FR
+
+0045  MAIN
+0023  LOADENABLE
+0004  WRITE
+002C  PLLPROGRAM
+
+Project Files:
+Z:\vph1\TX018\TX018.C
+Y:\PICC\EXAMPLES\16C63.H
+Y:\PICC\EXAMPLES\CTYPE.H
+Y:\PICC\EXAMPLES\STDLIB.H
+Y:\PICC\EXAMPLES\STRING.H

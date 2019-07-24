@@ -1,0 +1,109 @@
+005     PORT_A
+006     PORT_B
+00C     @SCRATCH
+00D     @SCRATCH
+00D     _RETURN_
+00E     @SCRATCH
+00F     @SCRATCH
+010     @SCRATCH
+011     STRTOK.SAVE
+012     MAIN.H
+013     MAIN.L
+014-015 MAIN.N
+016-017 MAIN.A
+018-019 MAIN.R
+01A-01B PLLPROGRAM.N
+01A     MAIN.@SCRATCH
+01B     MAIN.@SCRATCH
+01C-01D PLLPROGRAM.R
+01E     PLLPROGRAM.A
+01F     PLLPROGRAM.@SCRATCH
+020     WRITE.BT
+020     PLLPROGRAM.@SCRATCH
+021     WRITE.N
+        ATOF.S
+  -002  ATOF.POW10
+  -002  ATOF.RESULT
+        ATOF.SIGN
+        ATOF.POINT
+        ATOF.C
+        ATOF.PTR
+        ABS.I
+        ABS.R
+  -000  LABS.L
+  -000  LABS.R
+        ATOI.S
+        ATOI.RESULT
+        ATOI.SIGN
+        ATOI.BASE
+        ATOI.PTR
+        ATOI.C
+        ATOL.S
+  -000  ATOL.RESULT
+  -000  ATOL.UR
+        ATOL.SIGN
+        ATOL.BASE
+        ATOL.PTR
+        ATOL.C
+        STRCAT.S1
+        STRCAT.S2
+        STRCAT.S
+        STRCHR.S
+        STRCHR.C
+        STRRCHR.S
+        STRRCHR.C
+        STRRCHR.P
+        STRCMP.S1
+        STRCMP.S2
+        STRNCMP.S1
+        STRNCMP.S2
+        STRNCMP.N
+        STRICMP.S1
+        STRICMP.S2
+        STRCOPY.S1
+        STRCOPY.S2
+        STRCOPY.S
+        STRNCPY.S1
+        STRNCPY.S2
+        STRNCPY.N
+        STRNCPY.S
+        STRCSPN.S1
+        STRCSPN.S2
+        STRCSPN.SC1
+        STRCSPN.SC2
+        STRSPN.S1
+        STRSPN.S2
+        STRSPN.SC1
+        STRSPN.SC2
+        STRLEN.S
+        STRLEN.SC
+        STRLWR.S
+        STRLWR.P
+        STRPBRK.S1
+        STRPBRK.S2
+        STRPBRK.SC1
+        STRPBRK.SC2
+        STRSTR.S1
+        STRSTR.S2
+        STRSTR.SC1
+        STRSTR.SC2
+        STRTOK.S1
+        STRTOK.S2
+        STRTOK.BEG
+        STRTOK.END
+        DELAY_MS.P1
+        DELAY_US.P2
+        FREC.FR
+        FRECQUERY.FR
+
+0042  MAIN
+0021  LOADENABLE
+0004  WRITE
+002A  PLLPROGRAM
+
+Project Files:
+Z:\MD2\MD2.C
+Y:\PICC\EXAMPLES\16F84.H
+Y:\PICC\EXAMPLES\CTYPE.H
+Y:\PICC\EXAMPLES\STDLIB.H
+Y:\PICC\EXAMPLES\STRING.H

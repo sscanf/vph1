@@ -1,0 +1,44 @@
+ANSI-C/cC++ Compiler for HC08 V-5.0.15, Apr 11 2002
+
+    1:  #include "events.h"
+    2:  
+    3:  void delay_ms (int time)
+    4:  {
+
+Function: delay_ms
+Source  : Z:\vph1\maestro\v2\Casa\Code\delay.c
+Options : -Cc -Env"GENPATH=Z:\vph1\maestro\v2\Casa;Z:\vph1\maestro\v2\Casa\bin;Z:\vph1\maestro\v2\Casa\cmd;*Z:\vph1\maestro\v2\Casa\Code;Z:\vph1\maestro\v2\Casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\maestro\v2\Comun;*Z:\vph1\maestro\v2;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -EnvOBJPATH=Z:\vph1\maestro\v2\Casa\bin -EnvTEXTPATH=Z:\vph1\maestro\v2\Casa\bin -Lasm=%n.lst -ObjN=Z:\vph1\maestro\v2\Casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\delay.c.o -Qvtpfar -WmsgSd1106
+
+  0000 87               PSHA  
+  0001 89               PSHX  
+  0002 a7fe             AIS   #-2
+    5:  	int n;
+    6:  	for (n=0;n<time;n++)
+  0004 95               TSX   
+  0005 6f01             CLR   1,X
+  0007 7f               CLR   ,X
+  0008 200f             BRA   L19 ;abs = 0019
+  000a          LA:     
+    7:  	{
+    8:  		even_timer = FALSE;
+  000a 4f               CLRA  
+  000b c70000           STA   even_timer
+  000e          LE:     
+    9:  		while (!even_timer);
+  000e c60000           LDA   even_timer
+  0011 27fb             BEQ   LE ;abs = 000e
+  0013 95               TSX   
+  0014 6c01             INC   1,X
+  0016 2601             BNE   L19 ;abs = 0019
+  0018 7c               INC   ,X
+  0019          L19:    
+  0019 e601             LDA   1,X
+  001b e003             SUB   3,X
+  001d f6               LDA   ,X
+  001e e202             SBC   2,X
+  0020 91e8             BLT   LA ;abs = 000a
+   10:  	}
+   11:  }
+  0022 a704             AIS   #4
+  0024 81               RTS   
+   12:  

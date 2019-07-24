@@ -1,0 +1,30 @@
+[PROJECT]
+Target=TX018.HEX
+Development_Mode=16
+Processor=0x6C63
+ToolSuite=CCS
+
+[Directories]
+Include=
+Library=
+LinkerScript=
+
+[Target Data]
+FileList=TX018.C;
+BuildTool=CCSC
+OptionString=-p +FM
+AdditionalOptionString=
+
+[TX018.C]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+
+[mru-list]
+1=Z:\vph1\TX018\TX018.C
+
+[Windows]
+0=0000 Z:\vph1\TX018\TX018.C 44 44 566 325 3 0

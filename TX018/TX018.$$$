@@ -1,0 +1,781 @@
+ /////////////////////////////////////////////////////// A    1 
+// A    2 
+// PROGRAMA PARA EL MODEM RM018 A    3 
+//--------------------------------------------------------- A    4 
+// A    5 
+// Parametros para el compilador: +FM +t A    6 
+// A    7 
+//  A    8 
+//////////////////////////////////////////////////////////// A    9 
+ A   10 
+#include <y:\picc\examples\16c63.h> A   11 
+ //////// Standard Header file for the PIC16C63 device //////// B    1 
+#device PIC16C63 B    2 
+#nolist B    3N
+/////////////////////////////// I/O definitions for INPUT() and OUTPUT_xxx() B    4N
+#define PIN_A0  40 B    5N
+#define PIN_A1  41 B    6N
+#define PIN_A2  42 B    7N
+#define PIN_A3  43 B    8N
+#define PIN_A4  44 B    9N
+#define PIN_A5  45 B   10N
+ B   11N
+#define PIN_B0  48 B   12N
+#define PIN_B1  49 B   13N
+#define PIN_B2  50 B   14N
+#define PIN_B3  51 B   15N
+#define PIN_B4  52 B   16N
+#define PIN_B5  53 B   17N
+#define PIN_B6  54 B   18N
+#define PIN_B7  55 B   19N
+ B   20N
+#define PIN_C0  56 B   21N
+#define PIN_C1  57 B   22N
+#define PIN_C2  58 B   23N
+#define PIN_C3  59 B   24N
+#define PIN_C4  60 B   25N
+#define PIN_C5  61 B   26N
+#define PIN_C6  62 B   27N
+#define PIN_C7  63 B   28N
+ B   29N
+/////////////////////////////// Useful defines B   30N
+#define FALSE 0 B   31N
+#define TRUE 1 B   32N
+ B   33N
+#define BYTE int B   34N
+#define BOOLEAN short int B   35N
+ B   36N
+#define getc getch B   37N
+#define getchar getch B   38N
+#define puts(s) {printf(s); putchar(13); putchar(10);} B   39N
+#define putc putchar B   40N
+ B   41N
+/////////////////////////////// Constants used for RESTART_CAUSE() B   42N
+#define WDT_FROM_SLEEP  0 B   43N
+#define WDT_TIMEOUT     8 B   44N
+#define MCLR_FROM_SLEEP 16 B   45N
+#define NORMAL_POWER_UP 24 B   46N
+/////////////////////////////// Constants used for SETUP_COUNTERS() B   47N
+#define RTCC_INTERNAL   0 B   48N
+#define RTCC_EXT_L_TO_H 32 B   49N
+#define RTCC_EXT_H_TO_L 48 B   50N
+#define RTCC_DIV_2      0 B   51N
+#define RTCC_DIV_4      1 B   52N
+#define RTCC_DIV_8      2 B   53N
+#define RTCC_DIV_16     3 B   54N
+#define RTCC_DIV_32     4 B   55N
+#define RTCC_DIV_64     5 B   56N
+#define RTCC_DIV_128    6 B   57N
+#define RTCC_DIV_256    7 B   58N
+#define WDT_18MS        8 B   59N
+#define WDT_36MS        9 B   60N
+#define WDT_72MS       10 B   61N
+#define WDT_144MS      11 B   62N
+#define WDT_288MS      12 B   63N
+#define WDT_576MS      13 B   64N
+#define WDT_1152MS     14 B   65N
+#define WDT_2304MS     15 B   66N
+#define L_TO_H              0x40 B   67N
+#define H_TO_L                 0 B   68N
+ B   69N
+#define RTCC_ZERO           0x0B20    // Used for ENABLE/DISABLE INTERRUPTS B   70N
+#define INT_RTCC            0x0B20    // Used for ENABLE/DISABLE INTERRUPTS B   71N
+#define RB_CHANGE           0x0B08    // Used for ENABLE/DISABLE INTERRUPTS B   72N
+#define INT_RB              0x0B08    // Used for ENABLE/DISABLE INTERRUPTS B   73N
+#define EXT_INT             0x0B10    // Used for ENABLE/DISABLE INTERRUPTS B   74N
+#define INT_EXT             0x0B10    // Used for ENABLE/DISABLE INTERRUPTS B   75N
+ B   76N
+#define GLOBAL              0x0BC0    // Used for ENABLE/DISABLE INTERRUPTS B   77N
+///////////////////////////////////// Constants used for Timer1 and Timer2 B   78N
+#define T1_DISABLED         0 B   79N
+#define T1_INTERNAL         5 B   80N
+#define T1_EXTERNAL         7 B   81N
+#define T1_EXTERNAL_SYNC    3 B   82N
+#define T1_CLK_OUT          8 B   83N
+#define T1_DIV_BY_1         0 B   84N
+#define T1_DIV_BY_2         0x10 B   85N
+#define T1_DIV_BY_4         0x20 B   86N
+#define T1_DIV_BY_8         0x30 B   87N
+#byte   TIMER_1_LOW=        0x0e B   88N
+#byte   TIMER_1_HIGH=       0x0f B   89N
+#define T2_DISABLED         0 B   90N
+#define T2_DIV_BY_1         4 B   91N
+#define T2_DIV_BY_4         5 B   92N
+#define T2_DIV_BY_16        6 B   93N
+#byte   TIMER_2=            0x11 B   94N
+ B   95N
+#define INT_TIMER1          0x8C01    // Used for ENABLE/DISABLE INTERRUPTS B   96N
+#define INT_TIMER2          0x8C02    // Used for ENABLE/DISABLE INTERRUPTS B   97N
+ B   98N
+//////////////////////////////////// Constants used for SETUP_CCP1() B   99N
+#define CCP_OFF                         0 B  100N
+#define CCP_CAPTURE_FE                  4 B  101N
+#define CCP_CAPTURE_RE                  5 B  102N
+#define CCP_CAPTURE_DIV_4               6 B  103N
+#define CCP_CAPTURE_DIV_16              7 B  104N
+#define CCP_COMPARE_SET_ON_MATCH        8 B  105N
+#define CCP_COMPARE_CLR_ON_MATCH        9 B  106N
+#define CCP_COMPARE_INT                 0xA B  107N
+#define CCP_COMPARE_RESET_TIMER         0xB B  108N
+#define CCP_PWM                         0xC B  109N
+#define CCP_PWM_PLUS_1                  0x1c B  110N
+#define CCP_PWM_PLUS_2                  0x2c B  111N
+#define CCP_PWM_PLUS_3                  0x3c B  112N
+long CCP_1; B  113N
+#byte   CCP_1    =                      0x15 B  114N
+#byte   CCP_1_LOW=                      0x15 B  115N
+#byte   CCP_1_HIGH=                     0x16 B  116N
+ B  117N
+#define INT_CCP1            0x8C04    // Used for ENABLE/DISABLE INTERRUPTS B  118N
+ B  119N
+//////////////////////////////////// Constants used for SETUP_CCP2() B  120N
+long CCP_2; B  121N
+#byte   CCP_2    =                      0x1B B  122N
+#byte   CCP_2_LOW=                      0x1B B  123N
+#byte   CCP_2_HIGH=                     0x1C B  124N
+ B  125N
+#define INT_CCP2            0x8D01    // Used for ENABLE/DISABLE INTERRUPTS B  126N
+ B  127N
+//////////////////////////////////// Constants used in SETUP_SSP() B  128N
+#define SPI_MASTER       0x20 B  129N
+#define SPI_SLAVE        0x24 B  130N
+#define SPI_L_TO_H       0 B  131N
+#define SPI_H_TO_L       0x10 B  132N
+#define SPI_CLK_DIV_4    0 B  133N
+#define SPI_CLK_DIV_16   1 B  134N
+#define SPI_CLK_DIV_64   2 B  135N
+#define SPI_CLK_T2       3 B  136N
+#define SPI_SS_DISABLED  1 B  137N
+#define INT_SSP             0x8C08    // Used for ENABLE/DISABLE INTERRUPTS B  138N
+ B  139N
+ B  140N
+ B  141N
+#define INT_RDA             0x8C20    // Used for ENABLE/DISABLE INTERRUPTS B  142N
+#define INT_TBE             0x8C10    // Used for ENABLE/DISABLE INTERRUPTS B  143N
+ B  144N
+#list B  145 
+A   11 
+//#include <y:\picc\examples\16c54.h> A   12 
+#include <y:\picc\examples\ctype.h> A   13 
+ ////        (C) Copyright 1996,1997 Custom Computer Services            //// C    1 
+//// This source code may only be used by licensed users of the CCS C   //// C    2 
+//// compiler.  This source code may only be distributed to other       //// C    3 
+//// licensed users of the CCS C compiler.  No other use, reproduction  //// C    4 
+//// or distribution is permitted without written permission.           //// C    5 
+//// Derivative programs created using this software in object code     //// C    6 
+//// form are not restricted in any way.                                //// C    7 
+//////////////////////////////////////////////////////////////////////////// C    8 
+#nolist C    9N
+#ifndef islower C   10N
+ C   11N
+#define islower(x)  isamoung(x,"abcdefghijklmnopqrstuvwxyz") C   12N
+#define isupper(x)  isamoung(x,"ABCDEFGHIJKLMNOPQRSTUVWXYZ") C   13N
+#define isalnum(x)  isamoung(x,"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz") C   14N
+#define isalpha(x)  isamoung(x,"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz") C   15N
+#define isdigit(x)  isamoung(x,"0123456789") C   16N
+#define isspace(x)  (x==' ') C   17N
+#define isxdigit(x) isamoung(x,"0123456789ABCDEFabcdef") C   18N
+#endif C   19N
+ C   20N
+#ifndef NULL C   21N
+	#define NULL	0 C   22N
+#endif C   23N
+ C   24N
+#ifndef BOOL C   25N
+ C   26N
+#define BOOL  int C   27N
+#define ULONG unsigned long C   28N
+#define WORD unsigned long C   29N
+#define UCHAR unsigned char C   30N
+ C   31N
+#define LOBYTE(w) ((unsigned int)(w)) C   32N
+#define HIBYTE(w) ((unsigned int)(((unsigned long)(w) >> 8) & 0xFF)) C   33N
+#define MAKEWORD(b, a)  ((WORD)(((BYTE)(a)) | ((WORD)((BYTE)(b))) << 8)) C   34N
+#define MAKEBYTE(b, a)  ((((BYTE)(a)) | (((BYTE)(b))) << 4)) C   35N
+ C   36N
+#define LONIBBLE(b) ((BYTE)(b))&0x0f C   37N
+#define HINIBBLE(b) ((BYTE)(((BYTE)(b)>>4)&0x0f)) C   38N
+#endif C   39N
+#list C   40 
+A   13 
+#include <y:\picc\examples\stdlib.h> A   14 
+ ////        (C) Copyright 1996,1997 Custom Computer Services            //// D    1 
+//// This source code may only be used by licensed users of the CCS C   //// D    2 
+//// compiler.  This source code may only be distributed to other       //// D    3 
+//// licensed users of the CCS C compiler.  No other use, reproduction  //// D    4 
+//// or distribution is permitted without written permission.           //// D    5 
+//// Derivative programs created using this software in object code     //// D    6 
+//// form are not restricted in any way.                                //// D    7 
+//////////////////////////////////////////////////////////////////////////// D    8 
+ D    9 
+#ifndef _stdlib_ D   10 
+ D   11 
+#define _stdlib_ true D   12 
+ D   13 
+float atof(char * s) { D   14 
+	float pow10; D   15 
+        float result; D   16 
+	int sign, point; D   17 
+	char c; D   18 
+        int ptr; D   19 
+ D   20 
+        ptr=0; D   21 
+   	sign = 0; D   22 
+	point = 0; D   23 
+	pow10 = 1.0; D   24 
+   	result = 0.0; D   25 
+ D   26 
+	do D   27 
+          c=s[ptr++]; D   28 
+        while ((c<'0'||c>'9') && c!='+' && c!='-' && c!='.'); D   29 
+ D   30 
+	while((c>='0' && c<='9') || c=='+' || c=='-' || c=='.') { D   31 
+           if(c == '-') { D   32 
+              sign = 1; D   33 
+              c = s[ptr++]; D   34 
+           } D   35 
+ D   36 
+           while((c >= '0' && c <= '9') && point == 0) { D   37 
+              result = 10*result + c - '0'; D   38 
+              c = s[ptr++]; D   39 
+           } D   40 
+ D   41 
+           if (c == '.') { D   42 
+              point = 1; D   43 
+              c = s[ptr++]; D   44 
+           } D   45 
+ D   46 
+	   while((c >= '0' && c <= '9') && point == 1) { D   47 
+	       pow10 = pow10*10; D   48 
+               result += (c - '0')/pow10; D   49 
+               c = s[ptr++]; D   50 
+           } D   51 
+        } D   52 
+ D   53 
+	if (sign == 1) D   54 
+   	  result = -1*result; D   55 
+ D   56 
+	return(result); D   57 
+} D   58 
+ D   59 
+int abs(signed int i) D   60 
+{ D   61 
+   int r; D   62 
+ D   63 
+   r = (i < 0) ? -i : i; D   64 
+   return(r); D   65 
+} D   66 
+ D   67 
+long labs(signed long l) D   68 
+{ D   69 
+   long r; D   70 
+ D   71 
+   r = (l < 0) ? -l : l; D   72 
+   return(r); D   73 
+} D   74 
+ D   75 
+/************************************************************/ D   76 
+ D   77 
+signed int atoi(char *s) D   78 
+{ D   79 
+   signed int result; D   80 
+	int sign, base, ptr; D   81 
+	char c; D   82 
+ D   83 
+   ptr=0; D   84 
+  	sign = 0; D   85 
+	base = 10; D   86 
+	result = 0; D   87 
+ D   88 
+	do D   89 
+      c=s[ptr++]; D   90 
+   while ((c<'0'||c>'9') && c!='+' && c!='-'); D   91 
+ D   92 
+	while ((c>='0' && c<='9') || c=='+' || c=='-') { D   93 
+      if (c == '-') { D   94 
+         sign = 1; D   95 
+         c = s[ptr++]; D   96 
+      } D   97 
+ D   98 
+      if (c == '0' && (s[ptr] == 'x' || s[ptr] == 'X')) { D   99 
+         base = 16; D  100 
+         c = s[ptr+1]; D  101 
+         ptr+=2; D  102 
+      } D  103 
+ D  104 
+      if (base == 10) D  105 
+         while (c >= '0' && c <= '9') { D  106 
+            result = 10*result + c - '0'; D  107 
+            c = s[ptr++]; D  108 
+         } D  109 
+ D  110 
+      if (base == 16) D  111 
+         while ((c>='0'&&c<='9')||(c>='a'&&c<='f')||(c>='A'&&c<='F')) { D  112 
+            c = TOUPPER(c); D  113 
+ D  114 
+            if (c >= '0' && c <= '9') D  115 
+               result = 16*result + c - '0'; D  116 
+ D  117 
+            if (c >= 'A' && c <= 'F') D  118 
+               result = 16*result + c - 'A' + 10; D  119 
+ D  120 
+            c = s[ptr++]; D  121 
+         } D  122 
+   } D  123 
+ D  124 
+   if (sign == 1 && base == 10) D  125 
+       result = -result; D  126 
+ D  127 
+   return(result); D  128 
+} D  129 
+ D  130 
+ D  131 
+ D  132 
+signed long atol(char *s) D  133 
+{ D  134 
+   signed long result; D  135 
+	unsigned long ur; D  136 
+   int sign, base, ptr; D  137 
+   char c; D  138 
+ D  139 
+   ptr=0; D  140 
+  	sign = 0; D  141 
+	base = 10; D  142 
+	result = 0; D  143 
+   ur = 0; D  144 
+ D  145 
+	do D  146 
+      c=s[ptr++]; D  147 
+   while ((c<'0'||c>'9') && c!='+' && c!='-'); D  148 
+ D  149 
+	while ((c>='0' && c<='9') || c=='+' || c=='-') { D  150 
+      if (c == '-') { D  151 
+         sign = 1; D  152 
+         c = s[ptr++]; D  153 
+      } D  154 
+ D  155 
+      if (c == '+') D  156 
+         c = s[ptr++]; D  157 
+ D  158 
+      if (c == '0' && (s[ptr] == 'x' || s[ptr] == 'X')) { D  159 
+         base = 16; D  160 
+	      ptr += 1; D  161 
+         c = s[ptr++]; D  162 
+      } D  163 
+ D  164 
+      if (base == 10) D  165 
+         while (c >= '0' && c <= '9') { D  166 
+            result = 10*result + c - '0'; D  167 
+            c = s[ptr++]; D  168 
+         } D  169 
+ D  170 
+      if (base == 16) D  171 
+         while ((c>='0'&&c<='9')||(c>='a'&&c<='f')||(c>='A'&&c<='F')) { D  172 
+            if (c >= '0' && c <= '9') { D  173 
+               ur = 16*ur + c - '0'; D  174 
+               c = s[ptr++]; D  175 
+	         } D  176 
+ D  177 
+     	      c = TOUPPER(c); D  178 
+            if (c >= 'A' && c <= 'F') { D  179 
+               ur = 16*ur + c - 'A' + 10; D  180 
+               c = s[ptr++]; D  181 
+            } D  182 
+         } D  183 
+   } D  184 
+ D  185 
+   if (base == 10 && sign == 1) D  186 
+      result = -result; D  187 
+   if (base == 16) D  188 
+      result = (ur <= 32767) ? ur : -(~(ur) + 1); D  189 
+ D  190 
+   return(result); D  191 
+} D  192 
+ D  193 
+#endif D  194 
+A   14 
+#include <y:\picc\examples\string.h>       A   15 
+ //////////////////////////////////////////////////////////////////////////// E    1 
+////        (C) Copyright 1996,1997 Custom Computer Services            //// E    2 
+//// This source code may only be used by licensed users of the CCS C   //// E    3 
+//// compiler.  This source code may only be distributed to other       //// E    4 
+//// licensed users of the CCS C compiler.  No other use, reproduction  //// E    5 
+//// or distribution is permitted without written permission.           //// E    6 
+//// Derivative programs created using this software in object code     //// E    7 
+//// form are not restricted in any way.                                //// E    8 
+//////////////////////////////////////////////////////////////////////////// E    9 
+ E   10 
+#include <y:\picc\examples\ctype.h> E   11 
+ ////        (C) Copyright 1996,1997 Custom Computer Services            //// C    1 
+//// This source code may only be used by licensed users of the CCS C   //// C    2 
+//// compiler.  This source code may only be distributed to other       //// C    3 
+//// licensed users of the CCS C compiler.  No other use, reproduction  //// C    4 
+//// or distribution is permitted without written permission.           //// C    5 
+//// Derivative programs created using this software in object code     //// C    6 
+//// form are not restricted in any way.                                //// C    7 
+//////////////////////////////////////////////////////////////////////////// C    8 
+#nolist C    9N
+#ifndef islower C   10N
+ C   11N
+#define islower(x)  isamoung(x,"abcdefghijklmnopqrstuvwxyz") C   12N
+#define isupper(x)  isamoung(x,"ABCDEFGHIJKLMNOPQRSTUVWXYZ") C   13N
+#define isalnum(x)  isamoung(x,"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz") C   14N
+#define isalpha(x)  isamoung(x,"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz") C   15N
+#define isdigit(x)  isamoung(x,"0123456789") C   16N
+#define isspace(x)  (x==' ') C   17N
+#define isxdigit(x) isamoung(x,"0123456789ABCDEFabcdef") C   18N
+#endif C   19N
+ C   20N
+#ifndef NULL C   21N
+	#define NULL	0 C   22N
+#endif C   23N
+ C   24N
+#ifndef BOOL C   25N
+ C   26N
+#define BOOL  int C   27N
+#define ULONG unsigned long C   28N
+#define WORD unsigned long C   29N
+#define UCHAR unsigned char C   30N
+ C   31N
+#define LOBYTE(w) ((unsigned int)(w)) C   32N
+#define HIBYTE(w) ((unsigned int)(((unsigned long)(w) >> 8) & 0xFF)) C   33N
+#define MAKEWORD(b, a)  ((WORD)(((BYTE)(a)) | ((WORD)((BYTE)(b))) << 8)) C   34N
+#define MAKEBYTE(b, a)  ((((BYTE)(a)) | (((BYTE)(b))) << 4)) C   35N
+ C   36N
+#define LONIBBLE(b) ((BYTE)(b))&0x0f C   37N
+#define HINIBBLE(b) ((BYTE)(((BYTE)(b)>>4)&0x0f)) C   38N
+#endif C   39N
+#list C   40 
+E   11 
+ E   12 
+/* standard template: char *strcat(char *s1, const char *s2) */ E   13 
+ E   14 
+char strcat(char *s1, char *s2) E   15 
+{ E   16 
+   char *s; E   17 
+ E   18 
+   for (s = s1; *s != '\0'; s++); E   19 
+   while ((*s = *s2) != '\0') E   20 
+   { E   21 
+       s++; E   22 
+       s2++; E   23 
+   } E   24 
+   return(s1); E   25 
+} E   26 
+ E   27 
+/***********************************************************/ E   28 
+ E   29 
+/* standard template: char *strchr(const char *s, int c). E   30 
+   Finds first occurrence of c in s1 */ E   31 
+ E   32 
+char strchr(char *s, int c) E   33 
+{ E   34 
+   for (; *s != c; s++) E   35 
+      if (*s == '\0') E   36 
+         return(0); E   37 
+   return(s); E   38 
+} E   39 
+ E   40 
+/* standard template: char *strrchr(const char *s, int c). E   41 
+   Finds last occurrence of c in s1 */ E   42 
+ E   43 
+char strrchr(char *s, int c) E   44 
+{ E   45 
+   char *p; E   46 
+ E   47 
+   for (p = 0; ; s++) E   48 
+   { E   49 
+      if (*s == c) E   50 
+         p = s; E   51 
+      if (*s == '\0') E   52 
+         return(p); E   53 
+   } E   54 
+} E   55 
+ E   56 
+/*****************************************************************/ E   57 
+ E   58 
+/* standard template: int strcmp(const char *s1, const char *s2). E   59 
+   Compares s1 & s2; returns -1 if s1<s2, 0 if s1=s2, 1 if s1>s2 */ E   60 
+ E   61 
+signed int strcmp(char *s1, char *s2) E   62 
+{ E   63 
+   for (; *s1 == *s2; s1++, s2++) E   64 
+      if (*s1 == '\0') E   65 
+         return(0); E   66 
+   return((*s1 < *s2) ? -1: 1); E   67 
+} E   68 
+ E   69 
+/* standard template: E   70 
+   int strncmp(const char *s1, const char *s2, size_t n). E   71 
+   Compares max of n characters (not following 0) from s1 to s2; E   72 
+   returns same as strcmp */ E   73 
+ E   74 
+signed int strncmp(char *s1, char *s2, int n) E   75 
+{ E   76 
+   for (; n > 0; s1++, s2++, n--) E   77 
+      if (*s1 != *s2) E   78 
+         return((*s1 <*s2) ? -1: 1); E   79 
+      else if (*s1 == '\0') E   80 
+         return(0); E   81 
+   return(0); E   82 
+} E   83 
+ E   84 
+/* standard template: size_t stricmp(const char *s1, const char *s2). E   85 
+   Compares s1 to s2 ignoring case (upper vs. lower) */ E   86 
+ E   87 
+signed int stricmp(char *s1, char *s2) E   88 
+{ E   89 
+ for(; *s1==*s2||(ISALPHA(*s1)&&ISALPHA(*s2)&&(*s1==*s2+32||*s2==*s1+32)); E   90 
+    s1++, s2++) E   91 
+    if (*s1 == '\0') E   92 
+       return(0); E   93 
+ return((*s1 < *s2) ? -1: 1); E   94 
+} E   95 
+ E   96 
+/***************************************************************/ E   97 
+ E   98 
+/* compiler ignored the name 'strcpy()'; perhaps, it's reserved? E   99 
+   Standard template: char *strcpy(char *s1, const char *s2) */ E  100 
+ E  101 
+char strcopy(char *s1, char *s2) E  102 
+{ E  103 
+  char *s; E  104 
+ E  105 
+  for (s = s1; *s2 != 0; s++, s2++) E  106 
+	  *s = *s2; E  107 
+  return(s1); E  108 
+} E  109 
+ E  110 
+/* standard template: E  111 
+   char *strncpy(char *s1, const char *s2, size_t n). E  112 
+   Copies max of n characters (not following ending '\0') E  113 
+   from s2 in s1; if s2 has less than n characters, appends 0 */ E  114 
+ E  115 
+char strncpy(char *s1, char *s2, int n) E  116 
+{ E  117 
+  char *s; E  118 
+ E  119 
+  for (s = s1; n > 0 && *s2 != '\0'; n--) E  120 
+     *s++ = *s2++; E  121 
+  for (; n > 0; n--) E  122 
+     *s++ = '\0'; E  123 
+ E  124 
+  return(s1); E  125 
+} E  126 
+ E  127 
+/***************************************************************/ E  128 
+ E  129 
+/* standard template: E  130 
+   size_t strcspn(const char *s1, const char *s2). E  131 
+   Computes length of max initial segment of s1 that E  132 
+   consists entirely of characters NOT from s2*/ E  133 
+ E  134 
+int strcspn(char *s1, char *s2) E  135 
+{ E  136 
+   char *sc1, *sc2; E  137 
+ E  138 
+   for (sc1 = s1; *sc1 != 0; sc1++) E  139 
+      for (sc2 = s2; *sc2 != 0; sc2++) E  140 
+         if (*sc1 == *sc2) E  141 
+            return(sc1 - s1); E  142 
+   return(sc1 - s1); E  143 
+} E  144 
+ E  145 
+/* computes length of max initial segment of s1 consisting E  146 
+   entirely of characters from s2 */ E  147 
+ E  148 
+int strspn(char *s1, char *s2) E  149 
+{ E  150 
+   char *sc1, *sc2; E  151 
+ E  152 
+   for (sc1 = s1; *sc1 != 0; sc1++) E  153 
+      for (sc2 = s2; ; sc2++) E  154 
+	 if (*sc2 == '\0') E  155 
+	    return(sc1 - s1); E  156 
+         else if (*sc1 == *sc2) E  157 
+            break; E  158 
+   return(sc1 - s1); E  159 
+} E  160 
+ E  161 
+/***************************************************************/ E  162 
+ E  163 
+/* standard template: size_t strlen(const char *s). E  164 
+   Computes length of s1 (preceding terminating 0) */ E  165 
+ E  166 
+int strlen(char *s) E  167 
+{ E  168 
+   char *sc; E  169 
+ E  170 
+   for (sc = s; *sc != 0; sc++); E  171 
+   return(sc - s); E  172 
+} E  173 
+ E  174 
+/***************************************************************/ E  175 
+ E  176 
+/* standard template: char *strlwr(char *s). E  177 
+   Replaces uppercase letters by lowercase; E  178 
+   returns pointer to new string s */ E  179 
+ E  180 
+char strlwr(char *s) E  181 
+{ E  182 
+   char *p; E  183 
+ E  184 
+   for (p = s; *p != '\0'; p++) E  185 
+      if (*p >= 'A' && *p <='Z') E  186 
+         *p += 'a' - 'A'; E  187 
+   return(s); E  188 
+} E  189 
+ E  190 
+/****************************************************************/ E  191 
+ E  192 
+/* standard template: E  193 
+   char *strpbrk(const char *s1, const char *s2). E  194 
+   Locates first occurence of any character from s2 in s1; E  195 
+   returns s1 if s2 is empty string */ E  196 
+ E  197 
+char strpbrk(char *s1, char *s2) E  198 
+{ E  199 
+   char *sc1, *sc2; E  200 
+ E  201 
+   for (sc1 = s1; *sc1 != 0; sc1++) E  202 
+      for (sc2 = s2; *sc2 != 0; sc2++) E  203 
+         if (*sc1 == *sc2) E  204 
+            return(sc1); E  205 
+   return(0); E  206 
+} E  207 
+ E  208 
+/****************************************************************/ E  209 
+ E  210 
+/* standard template: E  211 
+   char *strstr(const char *s1, const char *s2); E  212 
+   Locates first occurence of character sequence s2 in s1; E  213 
+   returns 0 if s2 is empty string */ E  214 
+ E  215 
+char strstr(char *s1, char *s2) E  216 
+{ E  217 
+   char *sc1, *sc2; E  218 
+ E  219 
+   if (*s2 == 0) E  220 
+         return(s1); E  221 
+   for (; s1 = strchr(s1, *s2); s1++) E  222 
+   { E  223 
+      for (sc1 = s1, sc2 = s2; ; sc1++, sc2++) E  224 
+         if (*sc2 == 0) E  225 
+	    return(s1); E  226 
+         else if (*sc1 != *sc2) E  227 
+            break; E  228 
+   } E  229 
+   return(0); E  230 
+} E  231 
+ E  232 
+/************************************************************/ E  233 
+ E  234 
+/* standard template: char *strtok(char *s1, const char *s2). E  235 
+ E  236 
+   Finds next token in s1 delimited by a character from separator E  237 
+   string s2 (which can be different from call to call).  First call E  238 
+   starts at beginning of s1 searching for first character NOT E  239 
+   contained in s2; returns 0 if none is found. E  240 
+   If one is found, it is the start of first token (return value). E  241 
+   Function then searches from there for a character contained in s2. E  242 
+   If none is found, current token extends to end of s1, and subsequent E  243 
+   searches for a token will return 0.  If one is found, it is E  244 
+   overwritten by '\0', which terminates current token.  Function saves E  245 
+   pointer to following character from which next search will start. E  246 
+   Each subsequent call, with 0 as first argument, starts searching E  247 
+   from saved pointer */ E  248 
+ E  249 
+char strtok(char *s1, char *s2) E  250 
+{ E  251 
+   char *beg, *end; E  252 
+   static char *save; E  253 
+ E  254 
+   beg = (s1)? s1: save; E  255 
+   beg += strspn(beg, s2); E  256 
+   if (*beg == '\0') E  257 
+   { E  258 
+      *save = ' '; E  259 
+      return(0); E  260 
+   } E  261 
+   end = strpbrk(beg, s2); E  262 
+   if (*end != '\0') E  263 
+   { E  264 
+      *end = '\0'; E  265 
+      end++; E  266 
+   } E  267 
+   save = end; E  268 
+   return(beg); E  269 
+} E  270 
+ E  271 
+A   15 
+ A   16 
+#byte port_a=5 A   17 
+#byte port_b=6 A   18 
+ A   19 
+ A   20 
+#use delay (clock=20000000) A   21 
+ A   22 
+//#fuses HS,NOWDT,NOPROTECT,PUT A   23 
+ A   24 
+void PllProgram (long n, long r, int a); A   25 
+char frec (int fr); A   26 
+void frecQuery (int fr); A   27 
+ A   28 
+#define EE_N	0 A   29 
+#define EE_R	2 A   30 
+#define EE_A	4 A   31 
+ A   32 
+void main (void) A   33 
+{    A   34 
+	// CALCULADO CON MD2.EXE A   35 
+ A   36 
+	// FRECUENCIA: 868975 A   37 
+	// PRESCALER: 64 A   38 
+	// FREC.REF: 25 A   39 
+	// OSCILADOR: 4000 A   40 
+ A   41 
+	char h,l; A   42 
+	long n; A   43 
+	long a; A   44 
+	long r; A   45 
+     A   46 
+	n=543; A   47 
+	a=14; A   48 
+	r=321; A   49 
+	 A   50 
+	PllProgram (n,r,LOBYTE(a)); A   51 
+	while (1); A   52 
+} A   53 
+ A   54 
+void LoadEnable() A   55 
+{ A   56 
+	output_high(PIN_A2); A   57 
+	output_low (PIN_A2);	 A   58 
+} A   59 
+ A   60 
+void Write (int bt) A   61 
+{                     A   62 
+	int n; A   63 
+	 A   64 
+	for (n=0;n<8;n++) A   65 
+	{ A   66 
+		output_bit (PIN_C5,shift_left (&bt,1,0)); A   67 
+		output_high (PIN_C3);	//Clock A   68 
+		delay_us(1); A   69 
+		output_low (PIN_C3);	//Clock A   70 
+	} A   71 
+} A   72 
+ A   73 
+void PllProgram (long n, long r, int a) A   74 
+{ A   75 
+	Write (HIBYTE(r)); A   76 
+	Write (LOBYTE(r)); A   77 
+	LoadEnable(); A   78 
+	 A   79 
+	Write (HIBYTE(n)); A   80 
+	Write (LOBYTE(n)); A   81 
+	Write (a); A   82 
+	LoadEnable(); A   83 
+} A   84 
+ A   85 
+

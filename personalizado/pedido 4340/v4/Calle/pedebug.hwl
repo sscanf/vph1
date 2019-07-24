@@ -1,0 +1,20 @@
+OPEN source 0 0 60 30
+Source < attributes MARKS off
+OPEN assembly 60 0 40 30
+Assembly < attributes ADR off,CODE off,ABSADR on,SYMB off,TOPPC 0x80BB
+OPEN procedure 0 30 60 22
+Procedure < attributes VALUES on,TYPES off
+OPEN register 60 30 40 22
+Register < attributes FORMAT AUTO,COMPLEMENT None
+OPEN memory 60 52 40 20
+Memory < attributes FORMAT hex,COMPLEMENT None,WORD 1,ASC on,ADR on,ADDRESS 0x0
+OPEN data 0 72 60 28
+Data:1 < attributes SCOPE global,COMPLEMENT None,FORMAT Symb,MODE automatic,UPDATERATE 10,NAMEWIDTH 16
+OPEN data 0 52 60 20
+Data:2 < attributes SCOPE local,COMPLEMENT None,FORMAT Symb,MODE automatic,UPDATERATE 10,NAMEWIDTH 16
+OPEN command 60 72 40 28
+Command < attributes CACHESIZE 1000
+bckcolor 50331647
+font 'Courier New' 9 BLACK
+AUTOSIZE on
+ACTIVATE Source Assembly Procedure Register Memory Command Data:2 Data:1 

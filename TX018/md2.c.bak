@@ -1,0 +1,80 @@
+///////////////////////////////////////////////////////
+//
+// PROGRAMA PARA EL MODEM RM018
+//---------------------------------------------------------
+//
+// Parametros para el compilador: +FM +t
+//
+// 
+////////////////////////////////////////////////////////////
+
+#include <y:\picc\examples\16f84.h>
+//#include <y:\picc\examples\16c54.h>
+#include <y:\picc\examples\ctype.h>
+#include <y:\picc\examples\stdlib.h>
+#include <y:\picc\examples\string.h>      
+
+#byte port_a=5
+#byte port_b=6
+
+
+#use delay (clock=20000000)
+
+#fuses HS,NOWDT,NOPROTECT,PUT
+
+void PllProgram (long n, long r, int a);
+char frec (int fr);
+void frecQuery (int fr);
+
+#define EE_N	0
+#define EE_R	1
+#define EE_A	2
+
+void main (void)
+{   
+	long n;
+	long a;
+	long r;
+
+	n=read_eeprom (EE_N);
+	r=read_eeprom (EE_R);
+	a=read_eeprom (EE_A);
+
+	PllProgram (n,r,(int)a);
+
+	write_eeprom (EE_N+6,n);
+	write_eeprom (EE_R+6,r);
+	write_eeprom (EE_A+6,a);
+	while (1);
+}
+
+void LoadEnable()
+{
+	output_high(PIN_A2);
+	output_low (PIN_A2);	
+}
+
+void Write (int bt)
+{                    
+	int n;
+	
+	for (n=0;n<8;n++)
+	{
+		output_high (PIN_A2);	//Clock
+		output_bit (PIN_A0,shift_left (&bt,1,0));
+		output_low (PIN_A2);	//Clock
+	}
+}
+
+void PllProgram (long n, long r, int a)
+{
+	Write (HIBYTE(r));
+	Write (LOBYTE(r));
+	LoadEnable();
+	
+	Write (HIBYTE(n));
+	Write (LOBYTE(n));
+	Write (a);
+	LoadEnable();
+}
+

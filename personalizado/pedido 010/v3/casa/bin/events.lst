@@ -1,0 +1,232 @@
+ANSI-C/cC++ Compiler for HC08 V-5.0.15, Apr 11 2002
+
+    1:  /*
+    2:  ** ###################################################################
+    3:  **
+    4:  **     Filename  : Events.C
+    5:  **
+    6:  **     Project   : vph1
+    7:  ** 
+    8:  **     Processor : MC68HC908GP32CFB
+    9:  **
+   10:  **     Beantype  : Events
+   11:  **
+   12:  **     Version   : Driver 01.00
+   13:  **
+   14:  **     Compiler  : Metrowerks HC08 C Compiler V-5.0.13
+   15:  **
+   16:  **     Date/Time : 4/17/jueves, 15:23
+   17:  **
+   18:  **     Abstract  :
+   19:  **
+   20:  **         This is user's event module.
+   21:  **         Put your event handler code here.
+   22:  **
+   23:  **     Settings  :
+   24:  **
+   25:  **
+   26:  **     Contents  :
+   27:  **
+   28:  **         Cpu_OnSwINT - void Cpu_OnSwINT(void);
+   29:  **
+   30:  **
+   31:  **     (c) Copyright UNIS, spol. s r.o. 1997-2002
+   32:  **
+   33:  **     UNIS, spol. s r.o.
+   34:  **     Jundrovska 33
+   35:  **     624 00 Brno
+   36:  **     Czech Republic
+   37:  **
+   38:  **     http      : www.processorexpert.com
+   39:  **     mail      : info@processorexpert.com
+   40:  **
+   41:  ** ###################################################################
+   42:  */
+   43:  /* MODULE Events */
+   44:  
+   45:  #pragma MESSAGE DISABLE C1420 /* WARNING C1420: Result of function-call is ignored */
+   46:  
+   47:  /*Including used modules for compilling procedure*/
+   48:  #include "Cpu.h"
+   49:  #include "Events.h"
+   50:  #include "TIMER.h"
+   51:  #include "Teclado.h"
+   52:  #include "Terminal.h"
+   53:  #include "IRQ.h"
+   54:  
+   55:  /*Include shared modules, which are used for whole project*/
+   56:  #include "PE_Types.h"
+   57:  #include "PE_Error.h"
+   58:  #include "PE_Const.h"
+   59:  #include "IO_Map.h"
+   60:  #include "FX828.h"
+   61:  #include "maincpp.h"
+   62:  
+   63:  unsigned char even_timer;
+   64:  unsigned long even_timeout;
+   65:  
+   66:  /*
+   67:  ** ===================================================================
+   68:  **     Event       :  Cpu_OnSwINT (module Events)
+   69:  **
+   70:  **     From bean   :  Cpu [MC68HC908GP32_44]
+   71:  **     Description :
+   72:  **         This software event is called after software reset.
+   73:  **     Parameters  : None
+   74:  **     Returns     : Nothing
+   75:  ** ===================================================================
+   76:  */
+   77:  void Cpu_OnSwINT(void)
+   78:  {
+
+Function: Cpu_OnSwINT
+Source  : Z:\vph1\Personalizado\pedido 010\v3\casa\Code\events.c
+Options : -Cc -Env"GENPATH=Z:\vph1\Personalizado\pedido 010\v3\casa;Z:\vph1\Personalizado\pedido 010\v3\casa\bin;Z:\vph1\Personalizado\pedido 010\v3\casa\cmd;*Z:\vph1\Personalizado\pedido 010\v3\casa\Code;Z:\vph1\Personalizado\pedido 010\v3\casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\Personalizado\pedido 010\v3\Comun;*Z:\vph1\Personalizado\pedido 010\v3;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"OBJPATH=Z:\vph1\Personalizado\pedido 010\v3\casa\bin" -Env"TEXTPATH=Z:\vph1\Personalizado\pedido 010\v3\casa\bin" -Lasm=%n.lst -ObjN="Z:\vph1\Personalizado\pedido 010\v3\casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\events.c.o" -Qvtpfar -WmsgSd1106 -WmsgSd1420
+
+   79:    /* Write your code here ... */
+   80:  }
+  0000 81               RTS   
+   81:  
+   82:  /*
+   83:  ** ===================================================================
+   84:  **     Event       :  IRQ_OnInterrupt (module Events)
+   85:  **
+   86:  **     From bean   :  IRQ [ExtInt]
+   87:  **     Description :
+   88:  **         This event is called when the active signal edge/level
+   89:  **         occurs.
+   90:  **     Parameters  : None
+   91:  **     Returns     : Nothing
+   92:  ** ===================================================================
+   93:  */
+   94:  void IRQ_OnInterrupt(void)
+   95:  {
+
+Function: IRQ_OnInterrupt
+Source  : Z:\vph1\Personalizado\pedido 010\v3\casa\Code\events.c
+Options : -Cc -Env"GENPATH=Z:\vph1\Personalizado\pedido 010\v3\casa;Z:\vph1\Personalizado\pedido 010\v3\casa\bin;Z:\vph1\Personalizado\pedido 010\v3\casa\cmd;*Z:\vph1\Personalizado\pedido 010\v3\casa\Code;Z:\vph1\Personalizado\pedido 010\v3\casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\Personalizado\pedido 010\v3\Comun;*Z:\vph1\Personalizado\pedido 010\v3;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"OBJPATH=Z:\vph1\Personalizado\pedido 010\v3\casa\bin" -Env"TEXTPATH=Z:\vph1\Personalizado\pedido 010\v3\casa\bin" -Lasm=%n.lst -ObjN="Z:\vph1\Personalizado\pedido 010\v3\casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\events.c.o" -Qvtpfar -WmsgSd1106 -WmsgSd1420
+
+   96:  	MainIRQ();
+  0000 cc0000           JMP   MainIRQ
+   97:  }
+   98:  
+   99:  
+  100:  /*
+  101:  ** ===================================================================
+  102:  **     Event       :  TIMER_OnInterrupt (module Events)
+  103:  **
+  104:  **     From bean   :  TIMER [TimerInt]
+  105:  **     Description :
+  106:  **         When a timer interrupt occurs this event is called (only
+  107:  **         when the bean is enabled - "Enable" and the events are
+  108:  **         enabled - "EnableEvent").
+  109:  **     Parameters  : None
+  110:  **     Returns     : Nothing
+  111:  ** ===================================================================
+  112:  */
+  113:  void TIMER_OnInterrupt(void)
+  114:  {
+
+Function: TIMER_OnInterrupt
+Source  : Z:\vph1\Personalizado\pedido 010\v3\casa\Code\events.c
+Options : -Cc -Env"GENPATH=Z:\vph1\Personalizado\pedido 010\v3\casa;Z:\vph1\Personalizado\pedido 010\v3\casa\bin;Z:\vph1\Personalizado\pedido 010\v3\casa\cmd;*Z:\vph1\Personalizado\pedido 010\v3\casa\Code;Z:\vph1\Personalizado\pedido 010\v3\casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\Personalizado\pedido 010\v3\Comun;*Z:\vph1\Personalizado\pedido 010\v3;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"OBJPATH=Z:\vph1\Personalizado\pedido 010\v3\casa\bin" -Env"TEXTPATH=Z:\vph1\Personalizado\pedido 010\v3\casa\bin" -Lasm=%n.lst -ObjN="Z:\vph1\Personalizado\pedido 010\v3\casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\events.c.o" -Qvtpfar -WmsgSd1106 -WmsgSd1420
+
+  115:  	even_timer = TRUE;
+  0000 a601             LDA   #1
+  0002 c70000           STA   even_timer
+  116:  	if (even_timeout)
+  0005 450000           LDHX  @even_timeout
+  0008 e603             LDA   3,X
+  000a ea02             ORA   2,X
+  000c ea01             ORA   1,X
+  000e fa               ORA   ,X
+  000f 2709             BEQ   L1A ;abs = 001a
+  117:  		even_timeout --;
+  0011 450000           LDHX  @even_timeout
+  0014 cd0000           JSR   _LDEC
+  0017 cd0000           JSR   _POP32
+  001a          L1A:    
+  118:  }
+  001a 81               RTS   
+  119:  
+  120:  
+  121:  /*
+  122:  ** ===================================================================
+  123:  **     Event       :  SPI_OnRxChar (module Events)
+  124:  **
+  125:  **     From bean   :  SPI [SynchroMaster]
+  126:  **     Description :
+  127:  **         This event is called after a correct character is
+  128:  **         received.
+  129:  **     Parameters  : None
+  130:  **     Returns     : Nothing
+  131:  ** ===================================================================
+  132:  */
+  133:  void SPI_OnRxChar(void)
+  134:  {
+
+Function: SPI_OnRxChar
+Source  : Z:\vph1\Personalizado\pedido 010\v3\casa\Code\events.c
+Options : -Cc -Env"GENPATH=Z:\vph1\Personalizado\pedido 010\v3\casa;Z:\vph1\Personalizado\pedido 010\v3\casa\bin;Z:\vph1\Personalizado\pedido 010\v3\casa\cmd;*Z:\vph1\Personalizado\pedido 010\v3\casa\Code;Z:\vph1\Personalizado\pedido 010\v3\casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\Personalizado\pedido 010\v3\Comun;*Z:\vph1\Personalizado\pedido 010\v3;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"OBJPATH=Z:\vph1\Personalizado\pedido 010\v3\casa\bin" -Env"TEXTPATH=Z:\vph1\Personalizado\pedido 010\v3\casa\bin" -Lasm=%n.lst -ObjN="Z:\vph1\Personalizado\pedido 010\v3\casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\events.c.o" -Qvtpfar -WmsgSd1106 -WmsgSd1420
+
+  135:    /* Write your code here ... */
+  136:  }
+  0000 81               RTS   
+  137:  
+  138:  /*
+  139:  ** ===================================================================
+  140:  **     Event       :  SPI_OnTxChar (module Events)
+  141:  **
+  142:  **     From bean   :  SPI [SynchroMaster]
+  143:  **     Description :
+  144:  **         This event is called after a character is transmitted.
+  145:  **     Parameters  : None
+  146:  **     Returns     : Nothing
+  147:  ** ===================================================================
+  148:  */
+  149:  void SPI_OnTxChar(void)
+  150:  {
+
+Function: SPI_OnTxChar
+Source  : Z:\vph1\Personalizado\pedido 010\v3\casa\Code\events.c
+Options : -Cc -Env"GENPATH=Z:\vph1\Personalizado\pedido 010\v3\casa;Z:\vph1\Personalizado\pedido 010\v3\casa\bin;Z:\vph1\Personalizado\pedido 010\v3\casa\cmd;*Z:\vph1\Personalizado\pedido 010\v3\casa\Code;Z:\vph1\Personalizado\pedido 010\v3\casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\Personalizado\pedido 010\v3\Comun;*Z:\vph1\Personalizado\pedido 010\v3;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"OBJPATH=Z:\vph1\Personalizado\pedido 010\v3\casa\bin" -Env"TEXTPATH=Z:\vph1\Personalizado\pedido 010\v3\casa\bin" -Lasm=%n.lst -ObjN="Z:\vph1\Personalizado\pedido 010\v3\casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\events.c.o" -Qvtpfar -WmsgSd1106 -WmsgSd1420
+
+  151:    /* Write your code here ... */
+  152:  }
+  0000 81               RTS   
+  153:  
+  154:  /*
+  155:  ** ===================================================================
+  156:  **     Event       :  SPI_OnError (module Events)
+  157:  **
+  158:  **     From bean   :  SPI [SynchroMaster]
+  159:  **     Description :
+  160:  **         This event is called when a channel error (not the error
+  161:  **         returned by a given method) occurs. The errors can be
+  162:  **         read using GetError method.
+  163:  **     Parameters  : None
+  164:  **     Returns     : Nothing
+  165:  ** ===================================================================
+  166:  */
+  167:  void SPI_OnError(void)
+  168:  {
+
+Function: SPI_OnError
+Source  : Z:\vph1\Personalizado\pedido 010\v3\casa\Code\events.c
+Options : -Cc -Env"GENPATH=Z:\vph1\Personalizado\pedido 010\v3\casa;Z:\vph1\Personalizado\pedido 010\v3\casa\bin;Z:\vph1\Personalizado\pedido 010\v3\casa\cmd;*Z:\vph1\Personalizado\pedido 010\v3\casa\Code;Z:\vph1\Personalizado\pedido 010\v3\casa\prm;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\LIB;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\src;*D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\Bin\Plugins\support\ProcessorExpert;*Z:\vph1\Personalizado\pedido 010\v3\Comun;*Z:\vph1\Personalizado\pedido 010\v3;D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"LIBPATH=D:\Archivos de programa\Metrowerks\CodeWarrior HC08_V2.0\lib\HC08c\INCLUDE" -Env"OBJPATH=Z:\vph1\Personalizado\pedido 010\v3\casa\bin" -Env"TEXTPATH=Z:\vph1\Personalizado\pedido 010\v3\casa\bin" -Lasm=%n.lst -ObjN="Z:\vph1\Personalizado\pedido 010\v3\casa\vph1_Data\P&E_PEDebug_FCS-ICS-ICD\ObjectCode\events.c.o" -Qvtpfar -WmsgSd1106 -WmsgSd1420
+
+  169:    /* Write your code here ... */
+  170:  }
+  0000 81               RTS   
+  171:  
+  172:  /* END Events */
+  173:  
+  174:  /*
+  175:  ** ###################################################################
+  176:  **
+  177:  **     This file was created by UNIS Processor Expert 02.89 for 
+  178:  **     the Motorola HC08 series of microcontrollers.
+  179:  **
+  180:  ** ###################################################################
+  181:  */
+  182:  

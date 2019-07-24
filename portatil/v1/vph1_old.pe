@@ -1,0 +1,16 @@
+Processor Expert Version 0289
+
+[Options]
+EventsDirectory=CODE\
+DestinationSubDir=
+DocumentationDir=DOC\
+CompiledFilesSubDir=
+FPGAsubdirectory=
+TemporaryDir=D:\DOCUME~1\oscar\CONFIG~1\Temp\
+OverwriteEvents=3
+UseExistingModules=No
+RenamePeripheries=Yes
+Autodependency=Yes
+ProjectCompNumb=1
+
+[_end_]

@@ -1,0 +1,11 @@
+읕MD2
+   읕MAIN  0/41  Ram=6
+      쳐@CINIT  (Inline)  Ram=0
+      읕PLLPROGRAM  0/24  Ram=7
+         쳐WRITE  0/24  Ram=2
+         쳐WRITE  0/24  Ram=2
+         쳐LOADENABLE  0/9  Ram=0
+         쳐WRITE  0/24  Ram=2
+         쳐WRITE  0/24  Ram=2
+         쳐WRITE  0/24  Ram=2
+         읕LOADENABLE  0/9  Ram=0

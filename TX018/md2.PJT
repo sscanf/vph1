@@ -1,0 +1,30 @@
+[PROJECT]
+Target=md2.HEX
+Development_Mode=16
+Processor=0x684A
+ToolSuite=CCS
+
+[Directories]
+Include=
+Library=
+LinkerScript=
+
+[Target Data]
+FileList=md2.c;
+BuildTool=CCSC
+OptionString=-p +FM
+AdditionalOptionString=
+
+[md2.c]
+Type=4
+Path=
+FileList=
+BuildTool=
+OptionString=
+AdditionalOptionString=
+
+[mru-list]
+1=Z:\MD2\MD2.C
+
+[Windows]
+0=0000 Z:\MD2\MD2.C 44 44 566 325 3 0
